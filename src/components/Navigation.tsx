@@ -54,16 +54,16 @@ export default function Navigation() {
               </button>
               {equipmentOpen && (
                 <div className="absolute top-full left-0 mt-2 w-48 bg-charcoal border border-silver/20 rounded-lg shadow-xl py-2">
-                  <Link href="/plant-equipment" className="block px-4 py-2 text-off-white/80 hover:text-silver hover:bg-silver/5">
+                  <Link href="/equipment" className="block px-4 py-2 text-off-white/80 hover:text-silver hover:bg-silver/5">
                     All Equipment
                   </Link>
-                  <Link href="/plant-equipment?category=cranes" className="block px-4 py-2 text-off-white/80 hover:text-silver hover:bg-silver/5">
+                  <Link href="/equipment?category=cranes" className="block px-4 py-2 text-off-white/80 hover:text-silver hover:bg-silver/5">
                     Cranes
                   </Link>
-                  <Link href="/plant-equipment?category=generators" className="block px-4 py-2 text-off-white/80 hover:text-silver hover:bg-silver/5">
+                  <Link href="/equipment?category=generators" className="block px-4 py-2 text-off-white/80 hover:text-silver hover:bg-silver/5">
                     Generators
                   </Link>
-                  <Link href="/plant-equipment?category=pumps" className="block px-4 py-2 text-off-white/80 hover:text-silver hover:bg-silver/5">
+                  <Link href="/equipment?category=pumps" className="block px-4 py-2 text-off-white/80 hover:text-silver hover:bg-silver/5">
                     Pumps
                   </Link>
                 </div>
@@ -99,7 +99,7 @@ export default function Navigation() {
           <div className="lg:hidden pb-6 border-t border-silver/10">
             <div className="flex flex-col space-y-4 pt-4">
               <Link href="/aircraft" className="text-off-white/80 hover:text-silver py-2">Aircraft</Link>
-              <Link href="/plant-equipment" className="text-off-white/80 hover:text-silver py-2">Plant & Equipment</Link>
+              <Link href="/equipment" className="text-off-white/80 hover:text-silver py-2">Plant & Equipment</Link>
               <Link href="/services" className="text-off-white/80 hover:text-silver py-2">Services</Link>
               <Link href="/about" className="text-off-white/80 hover:text-silver py-2">About</Link>
               <Link href="/contact" className="bg-gold hover:bg-gold/90 text-charcoal font-semibold px-5 py-2 rounded text-center">
