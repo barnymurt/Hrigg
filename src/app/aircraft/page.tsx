@@ -31,7 +31,7 @@ export default function AircraftPage() {
       
       <section className="pt-32 pb-16 px-6">
         <div className="max-w-7xl mx-auto">
-          <h1 className="font-montserrat text-5xl font-bold text-off-white mb-4">Pre-Owned Aircraft</h1>
+          <h1 className="font-montserrat text-5xl font-bold text-off-white mb-4">Executive Aircraft</h1>
           <p className="text-silver text-lg">Discover our curated collection of {aircraft.length} premium aircraft</p>
         </div>
       </section>

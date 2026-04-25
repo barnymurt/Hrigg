@@ -22,10 +22,10 @@ export default function Home() {
         />
         <div className="relative z-10 max-w-4xl mx-auto px-6 text-center">
           <h1 className="font-montserrat text-5xl md:text-7xl font-bold text-off-white mb-6 tracking-tight">
-            Pre-Owned Aircraft<br />of Distinction
+            Executive Aircraft<br />of Distinction
           </h1>
           <p className="text-xl text-silver mb-10 max-w-2xl mx-auto">
-            Expertly sourced, professionally presented. Discover our curated collection of premium pre-owned aircraft.
+            Expertly sourced, professionally presented. Discover our curated collection of luxury private aircraft.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link 

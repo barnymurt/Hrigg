@@ -15,9 +15,9 @@ const inter = Inter({
 })
 
 export const metadata: Metadata = {
-  title: 'Hazelrigg Enterprises | Premium Aircraft & Industrial Equipment',
-  description: 'Expertly sourced pre-owned aircraft and industrial plant equipment. Quality assurance, global sourcing, and professional guidance.',
-  keywords: 'aircraft sales, pre-owned aircraft, industrial equipment, cranes, generators, plant equipment',
+  title: 'Hazelrigg Enterprises | Luxury Aircraft & Premium Equipment',
+  description: 'Expertly sourced executive aircraft and premium industrial equipment. Quality assurance, global sourcing, and professional guidance for discerning clients.',
+  keywords: 'luxury aircraft, executive jets, private aircraft sales, industrial equipment, cranes, generators, plant equipment',
 }
 
 export default function RootLayout({
