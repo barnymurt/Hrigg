@@ -6,7 +6,7 @@ import Image from 'next/image'
 
 export default function Navigation() {
   const [isOpen, setIsOpen] = useState(false)
-  const [aircraftOpen, setAircraftOpen] = useState(false)
+  const [servicesOpen, setServicesOpen] = useState(false)
   const [equipmentOpen, setEquipmentOpen] = useState(false)
 
   return (
@@ -17,40 +17,44 @@ export default function Navigation() {
             <Image src="/images/logo.png" alt="Hazelrigg Enterprises" width={180} height={50} className="h-auto w-auto" priority />
           </Link>
 
-          <div className="hidden lg:flex items-center space-x-8">
+          <div className="hidden lg:flex items-center space-x-6">
+            {/* Services Dropdown - Primary */}
             <div 
               className="relative"
-              onMouseEnter={() => setAircraftOpen(true)}
-              onMouseLeave={() => setAircraftOpen(false)}
+              onMouseEnter={() => setServicesOpen(true)}
+              onMouseLeave={() => setServicesOpen(false)}
             >
               <button className="text-off-white/80 hover:text-silver transition-colors font-medium py-2">
-                Aircraft
+                Services
               </button>
-              {aircraftOpen && (
-                <div className="absolute top-full left-0 mt-2 w-48 bg-charcoal border border-silver/20 rounded-lg shadow-xl py-2">
-                  <Link href="/aircraft" className="block px-4 py-2 text-off-white/80 hover:text-silver hover:bg-silver/5">
-                    All Aircraft
+              {servicesOpen && (
+                <div className="absolute top-full left-0 mt-2 w-56 bg-charcoal border border-silver/20 rounded-lg shadow-xl py-2">
+                  <Link href="/services" className="block px-4 py-2 text-off-white/80 hover:text-silver hover:bg-silver/5">
+                    All Services
                   </Link>
-                  <Link href="/aircraft?category=jet" className="block px-4 py-2 text-off-white/80 hover:text-silver hover:bg-silver/5">
-                    Jets
+                  <Link href="/equipment" className="block px-4 py-2 text-off-white/80 hover:text-silver hover:bg-silver/5">
+                    Machinery & Equipment
                   </Link>
-                  <Link href="/aircraft?category=turboprop" className="block px-4 py-2 text-off-white/80 hover:text-silver hover:bg-silver/5">
-                    Turboprops
-                  </Link>
-                  <Link href="/aircraft?category=helicopter" className="block px-4 py-2 text-off-white/80 hover:text-silver hover:bg-silver/5">
-                    Helicopters
+                  <Link href="/services#property" className="block px-4 py-2 text-off-white/80 hover:text-silver hover:bg-silver/5">
+                    Property Development
                   </Link>
                 </div>
               )}
             </div>
 
+            {/* About - Second Priority */}
+            <Link href="/about" className="text-off-white/80 hover:text-silver transition-colors font-medium py-2">
+              About
+            </Link>
+
+            {/* Equipment Dropdown - Third */}
             <div 
               className="relative"
               onMouseEnter={() => setEquipmentOpen(true)}
               onMouseLeave={() => setEquipmentOpen(false)}
             >
               <button className="text-off-white/80 hover:text-silver transition-colors font-medium py-2">
-                Plant & Equipment
+                Equipment
               </button>
               {equipmentOpen && (
                 <div className="absolute top-full left-0 mt-2 w-48 bg-charcoal border border-silver/20 rounded-lg shadow-xl py-2">
@@ -70,12 +74,11 @@ export default function Navigation() {
               )}
             </div>
 
-            <Link href="/services" className="text-off-white/80 hover:text-silver transition-colors font-medium">
-              Services
+            {/* Aircraft - Premium (last) */}
+            <Link href="/aircraft" className="text-off-white/80 hover:text-silver transition-colors font-medium py-2">
+              Aircraft
             </Link>
-            <Link href="/about" className="text-off-white/80 hover:text-silver transition-colors font-medium">
-              About
-            </Link>
+
             <Link href="/contact" className="bg-gold hover:bg-gold/90 text-charcoal font-semibold px-5 py-2 rounded transition-colors">
               Contact Us
             </Link>
@@ -98,10 +101,10 @@ export default function Navigation() {
         {isOpen && (
           <div className="lg:hidden pb-6 border-t border-silver/10">
             <div className="flex flex-col space-y-4 pt-4">
-              <Link href="/aircraft" className="text-off-white/80 hover:text-silver py-2">Aircraft</Link>
-              <Link href="/equipment" className="text-off-white/80 hover:text-silver py-2">Plant & Equipment</Link>
               <Link href="/services" className="text-off-white/80 hover:text-silver py-2">Services</Link>
               <Link href="/about" className="text-off-white/80 hover:text-silver py-2">About</Link>
+              <Link href="/equipment" className="text-off-white/80 hover:text-silver py-2">Equipment</Link>
+              <Link href="/aircraft" className="text-off-white/80 hover:text-silver py-2">Aircraft</Link>
               <Link href="/contact" className="bg-gold hover:bg-gold/90 text-charcoal font-semibold px-5 py-2 rounded text-center">
                 Contact Us
               </Link>

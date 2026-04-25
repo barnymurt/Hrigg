@@ -1,7 +1,7 @@
 import Link from 'next/link'
 import Navigation from '@/components/Navigation'
-import { getFeaturedAircraft } from '@/data/aircraft'
 import Image from 'next/image'
+import { getFeaturedAircraft } from '@/data/aircraft'
 
 export default function Home() {
   const featuredAircraft = getFeaturedAircraft()
@@ -10,35 +10,36 @@ export default function Home() {
     <main className="min-h-screen bg-charcoal">
       <Navigation />
       
-      <section className="relative h-screen flex items-center justify-center">
-        <div className="absolute inset-0 bg-gradient-to-b from-charcoal via-charcoal/90 to-charcoal" />
+      {/* Hero Section - Services/Property Focused */}
+      <section className="relative min-h-[90vh] flex items-center justify-center">
+        <div className="absolute inset-0 bg-gradient-to-b from-charcoal via-charcoal/95 to-charcoal" />
         <div 
-          className="absolute inset-0 opacity-30"
+          className="absolute inset-0 opacity-20"
           style={{
             backgroundImage: 'url(/images/hero.jpg)',
             backgroundSize: 'cover',
             backgroundPosition: 'center',
           }}
         />
-        <div className="relative z-10 max-w-4xl mx-auto px-6 text-center">
-          <h1 className="font-montserrat text-5xl md:text-7xl font-bold text-off-white mb-6 tracking-tight">
-            Executive Aircraft<br />of Distinction
+        <div className="relative z-10 max-w-5xl mx-auto px-6 text-center">
+          <h1 className="font-montserrat text-4xl md:text-6xl lg:text-7xl font-bold text-off-white mb-6 tracking-tight">
+            Machinery & Property<br />Solutions
           </h1>
-          <p className="text-xl text-silver mb-10 max-w-2xl mx-auto">
-            Expertly sourced, professionally presented. Discover our curated collection of luxury private aircraft.
+          <p className="text-xl md:text-2xl text-silver mb-10 max-w-3xl mx-auto leading-relaxed">
+            Global suppliers of industrial equipment and property development services. Specialising in shipping, port operations, energy, and infrastructure sectors.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link 
-              href="/aircraft" 
+              href="/services" 
               className="bg-gold hover:bg-gold/90 text-charcoal font-semibold px-8 py-4 rounded text-lg transition-colors"
             >
-              Browse Aircraft
+              Our Services
             </Link>
             <Link 
-              href="/plant-equipment" 
+              href="/about" 
               className="border border-silver text-off-white hover:bg-silver/10 font-semibold px-8 py-4 rounded text-lg transition-colors"
             >
-              Plant & Equipment
+              About Us
             </Link>
           </div>
         </div>
@@ -49,60 +50,151 @@ export default function Home() {
         </div>
       </section>
 
+      {/* About Section - Brief */}
       <section className="py-20 px-6 border-t border-silver/10">
         <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-12">
-            <h2 className="font-montserrat text-4xl font-bold text-off-white mb-4">About Hazelrigg Enterprises</h2>
-            <p className="text-silver/80 max-w-3xl mx-auto">
-              Based in North East England, Hazelrigg Enterprises are proud to serve our clients needs in the property and machinery supply sectors in the UK and internationally. With decades of experience, we have become a trusted global supplier of high-quality second-hand machinery, serving clients across a diverse range of industries.
-            </p>
-          </div>
-          <div className="grid md:grid-cols-3 gap-12">
-            <div className="text-center">
-              <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-aviation-blue/20 flex items-center justify-center">
-                <svg className="w-8 h-8 text-silver" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                </svg>
-              </div>
-              <h3 className="font-montserrat text-xl font-semibold text-off-white mb-2">Global Sourcing</h3>
-              <p className="text-silver/80">Worldwide network for exceptional aircraft and equipment acquisition</p>
+          <div className="grid md:grid-cols-2 gap-12 items-center">
+            <div>
+              <h2 className="font-montserrat text-4xl font-bold text-off-white mb-6">Who We Are</h2>
+              <p className="text-silver/80 mb-4 leading-relaxed">
+                Based in North East England at Port of Blyth, Hazelrigg Enterprises has decades of experience supplying industrial machinery and property solutions to clients across the UK and internationally.
+              </p>
+              <p className="text-silver/80 mb-6 leading-relaxed">
+                We believe problems are simply <span className="text-gold">opportunities</span> in disguise. Our global network and expertise mean we can source even the most hard-to-find equipment.
+              </p>
+              <Link href="/about" className="text-gold hover:underline font-medium">
+                Learn more about us →
+              </Link>
             </div>
-            <div className="text-center">
-              <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-aviation-blue/20 flex items-center justify-center">
-                <svg className="w-8 h-8 text-silver" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
-                </svg>
+            <div className="grid grid-cols-2 gap-4">
+              <div className="bg-charcoal/50 rounded-xl p-6 border border-silver/10 text-center">
+                <span className="text-4xl block mb-2">🌍</span>
+                <span className="text-off-white font-semibold">Global Sourcing</span>
               </div>
-              <h3 className="font-montserrat text-xl font-semibold text-off-white mb-2">Quality Assurance</h3>
-              <p className="text-silver/80">Rigorous inspection and documentation for every aircraft</p>
-            </div>
-            <div className="text-center">
-              <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-aviation-blue/20 flex items-center justify-center">
-                <svg className="w-8 h-8 text-silver" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
-                </svg>
+              <div className="bg-charcoal/50 rounded-xl p-6 border border-silver/10 text-center">
+                <span className="text-4xl block mb-2">🏭</span>
+                <span className="text-off-white font-semibold">Industrial Experts</span>
               </div>
-              <h3 className="font-montserrat text-xl font-semibold text-off-white mb-2">Expert Guidance</h3>
-              <p className="text-silver/80">Professional advisory from acquisition to delivery</p>
+              <div className="bg-charcoal/50 rounded-xl p-6 border border-silver/10 text-center">
+                <span className="text-4xl block mb-2">🏗️</span>
+                <span className="text-off-white font-semibold">Property Development</span>
+              </div>
+              <div className="bg-charcoal/50 rounded-xl p-6 border border-silver/10 text-center">
+                <span className="text-4xl block mb-2">✈️</span>
+                <span className="text-off-white font-semibold">Aircraft Sales</span>
+              </div>
             </div>
           </div>
         </div>
       </section>
 
-      <section className="py-20 bg-charcoal/50">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="text-center mb-12">
-            <h2 className="font-montserrat text-4xl font-bold text-off-white mb-4">Featured Aircraft</h2>
-            <p className="text-silver">Explore our selection of premium pre-owned aircraft</p>
+      {/* Services Section - Core Focus */}
+      <section className="py-20 px-6 bg-charcoal/50 border-y border-silver/10">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-16">
+            <h2 className="font-montserrat text-4xl font-bold text-off-white mb-4">Our Services</h2>
+            <p className="text-silver max-w-2xl mx-auto">From industrial machinery to property development, we deliver solutions that power your business.</p>
           </div>
-          <div className="grid md:grid-cols-3 gap-8">
+          
+          <div className="grid md:grid-cols-2 gap-8">
+            {/* Machinery & Equipment */}
+            <div className="bg-charcoal/30 rounded-xl p-8 border border-silver/10">
+              <div className="flex items-center gap-4 mb-6">
+                <div className="w-16 h-16 rounded-full bg-aviation-blue/20 flex items-center justify-center">
+                  <span className="text-3xl">🏭</span>
+                </div>
+                <div>
+                  <h3 className="font-montserrat text-2xl font-semibold text-off-white">Machinery & Equipment</h3>
+                  <p className="text-silver/60">Industrial plant and equipment supply</p>
+                </div>
+              </div>
+              <p className="text-silver/80 mb-6 leading-relaxed">
+                We specialise in all types of plant equipment and machinery with some of the best available anywhere in the UK. Our global contacts in shipping, port operations, energy, and infrastructure mean we can source what you need.
+              </p>
+              <ul className="space-y-3 mb-8">
+                <li className="flex items-center text-silver/80">
+                  <span className="text-gold mr-3">✓</span>
+                  Cranes & lifting equipment
+                </li>
+                <li className="flex items-center text-silver/80">
+                  <span className="text-gold mr-3">✓</span>
+                  Power generators (up to 1750kVA)
+                </li>
+                <li className="flex items-center text-silver/80">
+                  <span className="text-gold mr-3">✓</span>
+                  Pumps & water management
+                </li>
+                <li className="flex items-center text-silver/80">
+                  <span className="text-gold mr-3">✓</span>
+                  Trailers & transporters
+                </li>
+              </ul>
+              <Link href="/equipment" className="inline-block bg-gold/10 hover:bg-gold/20 text-gold font-medium px-6 py-3 rounded transition-colors">
+                View Equipment →
+              </Link>
+            </div>
+
+            {/* Property Development */}
+            <div className="bg-charcoal/30 rounded-xl p-8 border border-silver/10">
+              <div className="flex items-center gap-4 mb-6">
+                <div className="w-16 h-16 rounded-full bg-aviation-blue/20 flex items-center justify-center">
+                  <span className="text-3xl">🏗️</span>
+                </div>
+                <div>
+                  <h3 className="font-montserrat text-2xl font-semibold text-off-white">Property Development</h3>
+                  <p className="text-silver/60">Residential & commercial projects</p>
+                </div>
+              </div>
+              <p className="text-silver/80 mb-6 leading-relaxed">
+                We have an outstanding track record of sourcing and developing both residential and commercial property in innovative ways, adding value to portfolios and personal holdings alike.
+              </p>
+              <ul className="space-y-3 mb-8">
+                <li className="flex items-center text-silver/80">
+                  <span className="text-gold mr-3">✓</span>
+                  Commercial developments
+                </li>
+                <li className="flex items-center text-silver/80">
+                  <span className="text-gold mr-3">✓</span>
+                  Residential renovations
+                </li>
+                <li className="flex items-center text-silver/80">
+                  <span className="text-gold mr-3">✓</span>
+                  Portfolio management
+                </li>
+                <li className="flex items-center text-silver/80">
+                  <span className="text-gold mr-3">✓</span>
+                  Investment properties
+                </li>
+              </ul>
+              <Link href="/services" className="inline-block bg-gold/10 hover:bg-gold/20 text-gold font-medium px-6 py-3 rounded transition-colors">
+                Learn More →
+              </Link>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Premium Aircraft Section - Luxury Tier */}
+      <section className="py-20 px-6 border-t border-silver/10">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-12">
+            <span className="inline-block bg-gold/10 text-gold px-4 py-2 rounded-full text-sm font-medium mb-4">
+              Premium Offerings
+            </span>
+            <h2 className="font-montserrat text-4xl font-bold text-off-white mb-4">Executive Aircraft</h2>
+            <p className="text-silver max-w-2xl mx-auto">
+              For discerning clients seeking luxury private aviation, we offer a curated selection of executive aircraft with the same commitment to quality and service.
+            </p>
+          </div>
+          
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
             {featuredAircraft.map((aircraft) => (
               <Link 
                 key={aircraft.id} 
                 href={`/aircraft/${aircraft.slug}`}
                 className="group bg-charcoal/50 rounded-xl overflow-hidden border border-silver/10 hover:border-gold/30 transition-all duration-300"
               >
-                <div className="relative h-56 overflow-hidden">
+                <div className="relative h-44 overflow-hidden">
                   <Image
                     src={aircraft.images[0]}
                     alt={aircraft.name}
@@ -111,23 +203,18 @@ export default function Home() {
                     unoptimized
                   />
                 </div>
-                <div className="p-6">
-                  <h3 className="font-montserrat text-xl font-semibold text-off-white mb-2">{aircraft.name}</h3>
-                  <p className="text-silver/80 text-sm mb-4">{aircraft.shortDescription}</p>
-                  <div className="flex items-center justify-between">
-                    <span className="text-gold text-sm font-medium">{aircraft.manufacturer}</span>
-                    <span className="text-off-white/60 text-sm group-hover:text-silver transition-colors">
-                      View Details →
-                    </span>
-                  </div>
+                <div className="p-4">
+                  <h3 className="font-montserrat text-base font-semibold text-off-white mb-1 line-clamp-1">{aircraft.name}</h3>
+                  <p className="text-gold text-xs font-medium">{aircraft.manufacturer}</p>
                 </div>
               </Link>
             ))}
           </div>
-          <div className="text-center mt-10">
+
+          <div className="text-center">
             <Link 
               href="/aircraft" 
-              className="inline-block border border-silver text-off-white hover:bg-silver/10 font-medium px-8 py-3 rounded transition-colors"
+              className="inline-block border border-gold/50 text-gold hover:bg-gold/10 font-medium px-8 py-4 rounded transition-colors"
             >
               View All Aircraft
             </Link>
@@ -135,101 +222,42 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="py-20 border-t border-silver/10">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="grid md:grid-cols-2 gap-12 items-center">
-            <div>
-              <h2 className="font-montserrat text-4xl font-bold text-off-white mb-6">Our Services</h2>
-              <p className="text-silver/80 mb-6">
-                At Hazelrigg Enterprises we believe problems are simply opportunities in disguise. We specialize in locating quality plant and equipment for shipping, port operations, energy, and infrastructure sectors worldwide.
-              </p>
-              <ul className="space-y-4">
-                <li className="flex items-start">
-                  <span className="text-gold mr-3 mt-1">✓</span>
-                  <div>
-                    <span className="text-off-white font-medium">Industrial Machinery Supply</span>
-                    <p className="text-silver/60 text-sm">Sourcing and arranging quality machinery, plant and equipment anywhere in the world</p>
-                  </div>
-                </li>
-                <li className="flex items-start">
-                  <span className="text-gold mr-3 mt-1">✓</span>
-                  <div>
-                    <span className="text-off-white font-medium">Aircraft Sales</span>
-                    <p className="text-silver/60 text-sm">Premium pre-owned aircraft for discerning buyers</p>
-                  </div>
-                </li>
-                <li className="flex items-start">
-                  <span className="text-gold mr-3 mt-1">✓</span>
-                  <div>
-                    <span className="text-off-white font-medium">Property Development</span>
-                    <p className="text-silver/60 text-sm">Residential and commercial property in innovative ways</p>
-                  </div>
-                </li>
-              </ul>
-              <div className="mt-8">
-                <Link 
-                  href="/services" 
-                  className="text-gold hover:underline font-medium"
-                >
-                  Learn more about our services →
-                </Link>
-              </div>
-            </div>
-            <div className="relative h-80 rounded-xl overflow-hidden">
-              <Image
-                src="https://hazelriggenterprises.co.uk/wp-content/uploads/2025/05/Slice-1.png"
-                alt="Machinery and Plant"
-                fill
-                className="object-cover"
-                unoptimized
-              />
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section className="py-20 bg-charcoal/50 border-t border-silver/10">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="text-center mb-12">
-            <h2 className="font-montserrat text-4xl font-bold text-off-white mb-4">What Our Clients Say</h2>
-          </div>
+      {/* Testimonials */}
+      <section className="py-20 px-6 bg-charcoal/50 border-y border-silver/10">
+        <div className="max-w-7xl mx-auto">
+          <h2 className="font-montserrat text-3xl font-bold text-off-white mb-12 text-center">What Our Clients Say</h2>
           <div className="grid md:grid-cols-2 gap-8">
             <div className="bg-charcoal/30 rounded-xl p-8 border border-silver/10">
-              <p className="text-silver/80 italic mb-4">
-                "Hazelrigg provided exceptional services from concept to completion, on a large scale redevelopment of a Rural Property in Northumberland we have owned for over 40 years. Renovated to modern standards whilst sympathetically retaining the character of this amazing 160 year old building. Lead builder and developer, Kevin, provided exceptional support at every step, I cant recommend them enough."
+              <p className="text-silver/80 italic mb-6 leading-relaxed">
+                "Hazelrigg Enterprises Ltd, have provided us with the highest standards of quality and service performance for over 15 years. Supplying us with the highest standards of building development work and installation services on multiple projects throughout the UK. A most professional quality service at competitive prices."
               </p>
-              <p className="text-off-white font-medium">Private Client, London Based</p>
+              <p className="text-off-white font-medium">— Long-term Industrial Client</p>
             </div>
             <div className="bg-charcoal/30 rounded-xl p-8 border border-silver/10">
-              <p className="text-silver/80 italic mb-4">
-                "Hazelrigg Enterprises Ltd, have provided us with the highest standards of quality and service performance for over 15 years. Supplying us with the highest standards of building development work and installation services on multiple projects throughout the UK. A most professional quality service at competitive prices. Providing comprehensive site management planning and materials management."
+              <p className="text-silver/80 italic mb-6 leading-relaxed">
+                "Hazelrigg provided exceptional services from concept to completion, on a large scale redevelopment of a Rural Property in Northumberland we have owned for over 40 years. Renovated to modern standards whilst sympathetically retaining the character of this amazing 160 year old building."
               </p>
-              <p className="text-off-white font-medium">Long-term Client, UK</p>
+              <p className="text-off-white font-medium">— Private Client, London Based</p>
             </div>
           </div>
         </div>
       </section>
 
-      <section className="py-20">
-        <div className="max-w-4xl mx-auto px-6 text-center">
-          <h2 className="font-montserrat text-4xl font-bold text-off-white mb-4">Contact Us</h2>
+      {/* Contact CTA */}
+      <section className="py-20 px-6">
+        <div className="max-w-4xl mx-auto text-center">
+          <h2 className="font-montserrat text-4xl font-bold text-off-white mb-4">Get in Touch</h2>
           <p className="text-silver mb-8 max-w-2xl mx-auto">
-            Whatever you are looking for, contact Hazelrigg Enterprises today. Our experienced team provides personalised guidance through every step of the acquisition process.
+            Whether you need industrial equipment, property services, or are interested in our premium aircraft offerings, we&apos;re here to help.
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a href="tel:03337723903" className="bg-gold hover:bg-gold/90 text-charcoal font-semibold px-8 py-4 rounded text-lg transition-colors">
               0333 772 3903
             </a>
-            <Link 
-              href="/contact" 
-              className="border border-silver text-off-white hover:bg-silver/10 font-semibold px-8 py-4 rounded text-lg transition-colors"
-            >
-              Send an Email
+            <Link href="/contact" className="border border-silver text-off-white hover:bg-silver/10 font-semibold px-8 py-4 rounded text-lg transition-colors">
+              Contact Us
             </Link>
           </div>
-          <p className="text-silver/60 text-sm">
-            Port of Blyth, Wimbourne Quay, Regents Street, Blyth, Northumberland, NE24 1PX
-          </p>
         </div>
       </section>
 
@@ -238,22 +266,22 @@ export default function Home() {
           <div className="grid md:grid-cols-4 gap-8 mb-8">
             <div>
               <Image src="/images/logo.png" alt="Hazelrigg Enterprises" width={150} height={40} className="h-auto w-auto mb-4" unoptimized />
-              <p className="text-silver/60 text-sm">Premium pre-owned aircraft and industrial equipment sourced globally.</p>
+              <p className="text-silver/60 text-sm">Machinery, property, and premium aircraft solutions.</p>
             </div>
             <div>
-              <h5 className="text-off-white/80 font-medium mb-3">Aircraft</h5>
+              <h5 className="text-off-white/80 font-medium mb-3">Services</h5>
               <ul className="space-y-2 text-silver/60 text-sm">
-                <li><Link href="/aircraft?category=jet" className="hover:text-silver">Jets</Link></li>
-                <li><Link href="/aircraft?category=turboprop" className="hover:text-silver">Turboprops</Link></li>
-                <li><Link href="/aircraft?category=helicopter" className="hover:text-silver">Helicopters</Link></li>
+                <li><Link href="/services" className="hover:text-silver">Machinery & Equipment</Link></li>
+                <li><Link href="/services" className="hover:text-silver">Property Development</Link></li>
+                <li><Link href="/equipment" className="hover:text-silver">Equipment Sales</Link></li>
               </ul>
             </div>
             <div>
-              <h5 className="text-off-white/80 font-medium mb-3">Equipment</h5>
+              <h5 className="text-off-white/80 font-medium mb-3">Premium</h5>
               <ul className="space-y-2 text-silver/60 text-sm">
-                <li><Link href="/plant-equipment" className="hover:text-silver">Cranes</Link></li>
-                <li><Link href="/plant-equipment" className="hover:text-silver">Generators</Link></li>
-                <li><Link href="/plant-equipment" className="hover:text-silver">Pumps</Link></li>
+                <li><Link href="/aircraft" className="hover:text-silver">Executive Aircraft</Link></li>
+                <li><Link href="/aircraft?category=jet" className="hover:text-silver">Jets</Link></li>
+                <li><Link href="/aircraft?category=turboprop" className="hover:text-silver">Turboprops</Link></li>
               </ul>
             </div>
             <div>
@@ -261,6 +289,7 @@ export default function Home() {
               <ul className="space-y-2 text-silver/60 text-sm">
                 <li>0333 772 3903</li>
                 <li>info@hazelriggenterprises.co.uk</li>
+                <li>Port of Blyth, NE24 1PX</li>
               </ul>
             </div>
           </div>
