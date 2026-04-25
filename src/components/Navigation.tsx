@@ -2,6 +2,7 @@
 
 import { useState } from 'react'
 import Link from 'next/link'
+import Image from 'next/image'
 
 export default function Navigation() {
   const [isOpen, setIsOpen] = useState(false)
@@ -11,11 +12,11 @@ export default function Navigation() {
     <nav className="fixed top-0 left-0 right-0 z-50 bg-charcoal/95 backdrop-blur-sm border-b border-silver/10">
       <div className="max-w-7xl mx-auto px-6">
         <div className="flex items-center justify-between h-20">
-          <Link href="/" className="font-montserrat text-xl font-bold text-off-white tracking-wider">
-            HAZELRIGG
+          <Link href="/" className="flex items-center">
+            <Image src="/images/logo.png" alt="Hazelrigg Enterprises" width={180} height={50} className="h-auto w-auto" priority />
           </Link>
 
-          <div className="hidden md:flex items-center space-x-8">
+          <div className="hidden lg:flex items-center space-x-8">
             <div 
               className="relative"
               onMouseEnter={() => setAircraftOpen(true)}
@@ -56,7 +57,7 @@ export default function Navigation() {
           </div>
 
           <button 
-            className="md:hidden text-off-white"
+            className="lg:hidden text-off-white"
             onClick={() => setIsOpen(!isOpen)}
           >
             <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -70,7 +71,7 @@ export default function Navigation() {
         </div>
 
         {isOpen && (
-          <div className="md:hidden pb-6 border-t border-silver/10">
+          <div className="lg:hidden pb-6 border-t border-silver/10">
             <div className="flex flex-col space-y-4 pt-4">
               <Link href="/aircraft" className="text-off-white/80 hover:text-silver py-2">Aircraft</Link>
               <Link href="/plant-equipment" className="text-off-white/80 hover:text-silver py-2">Plant & Equipment</Link>
