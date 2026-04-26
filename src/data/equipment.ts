@@ -745,16 +745,20 @@ export const equipment: Equipment[] = [
     slug: 'scanai-ncn-110th',
     name: 'Scania NCN 110TH',
     shortDescription: '110 ton capacity transporter',
-    longDescription: 'Scania NCN 110TH transporter. 110 ton capacity.',
+    longDescription: 'Scania NCN 110TH transporter with 110 ton capacity. Reliable heavy-duty transport solution for industrial applications.',
     price: 'Price on Application',
     category: 'trailers',
     manufacturer: 'Scania',
     images: [
       'https://hazelriggenterprises.co.uk/wp-content/uploads/2026/02/20260217175546_0012-110NCN.jpg',
-      'https://hazelriggenterprises.co.uk/wp-content/uploads/2026/02/WhatsApp-Image-2026-02-17-at-16.19.25-c-1-600x450.jpeg',
+      'https://hazelriggenterprises.co.uk/wp-content/uploads/2026/02/WhatsApp-Image-2026-02-17-at-16.19.25-c-1.jpeg',
+      'https://hazelriggenterprises.co.uk/wp-content/uploads/2026/02/WhatsApp-Image-2026-02-17-at-16.19.25-Blue.jpeg',
+      'https://hazelriggenterprises.co.uk/wp-content/uploads/2026/02/WhatsApp-Image-2026-02-17-at-16.19.25-b.jpeg',
     ],
     specifications: {
       capacity: '110 ton',
+      make: 'Scania',
+      model: 'NCN 110TH',
     },
     highlights: [
       '110 ton capacity',
