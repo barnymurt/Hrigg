@@ -49,6 +49,17 @@ export interface EquipmentSpecifications {
   kilowatts?: string
   fuelCapacity?: string
   maxHead?: string
+  dwt?: string
+  dwcc?: string
+  yearBuilt?: number
+  yearRebuilt?: number
+  grt?: string
+  nrt?: string
+  lengthOverall?: string
+  breadthMoulded?: string
+  depthMoulded?: string
+  generators?: string
+  class?: string
   fuel?: string
   floodlights?: string
   dimensionsMinLxWxH?: string
