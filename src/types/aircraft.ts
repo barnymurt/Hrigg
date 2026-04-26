@@ -12,15 +12,24 @@ export interface AircraftSpecifications {
   engineMake?: string
   engineModel?: string
   engine1Time?: string
+  engine2Time?: string
   engineTBO?: string
+  engineProgram?: string
   avionic?: string
+  avionics?: string
   interior?: string
   exterior?: string
   exteriorYear?: number
   interiorYear?: number
   galley?: string
+  lavatory?: string
   inspectionStatus?: string
   performance?: string
+  numberOfSeats?: number
+  exteriorColor?: string
+  maintenanceProgram?: string
+  trackingSystem?: string
+  lastRefurb?: string
 }
 
 export interface Aircraft {
