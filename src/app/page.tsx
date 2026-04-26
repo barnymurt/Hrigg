@@ -2,6 +2,7 @@ import Link from 'next/link'
 import Navigation from '@/components/Navigation'
 import Image from 'next/image'
 import { getFeaturedAircraft } from '@/data/aircraft'
+import { Globe, Factory, Building2, Plane } from 'lucide-react'
 
 export default function Home() {
   const featuredAircraft = getFeaturedAircraft()
@@ -68,19 +69,19 @@ export default function Home() {
             </div>
             <div className="grid grid-cols-2 gap-4">
               <div className="bg-charcoal/50 rounded-xl p-6 border border-silver/10 text-center">
-                <span className="text-4xl block mb-2">🌍</span>
+                <Globe className="w-8 h-8 text-gold mx-auto mb-3" strokeWidth={1.5} />
                 <span className="text-off-white font-semibold">Global Sourcing</span>
               </div>
               <div className="bg-charcoal/50 rounded-xl p-6 border border-silver/10 text-center">
-                <span className="text-4xl block mb-2">🏭</span>
+                <Factory className="w-8 h-8 text-gold mx-auto mb-3" strokeWidth={1.5} />
                 <span className="text-off-white font-semibold">Industrial Experts</span>
               </div>
               <div className="bg-charcoal/50 rounded-xl p-6 border border-silver/10 text-center">
-                <span className="text-4xl block mb-2">🏗️</span>
+                <Building2 className="w-8 h-8 text-gold mx-auto mb-3" strokeWidth={1.5} />
                 <span className="text-off-white font-semibold">Property Development</span>
               </div>
               <div className="bg-charcoal/50 rounded-xl p-6 border border-silver/10 text-center">
-                <span className="text-4xl block mb-2">✈️</span>
+                <Plane className="w-8 h-8 text-gold mx-auto mb-3" strokeWidth={1.5} />
                 <span className="text-off-white font-semibold">Aircraft Sales</span>
               </div>
             </div>
@@ -101,7 +102,7 @@ export default function Home() {
             <div className="bg-charcoal/30 rounded-xl p-8 border border-silver/10">
               <div className="flex items-center gap-4 mb-6">
                 <div className="w-16 h-16 rounded-full bg-aviation-blue/20 flex items-center justify-center">
-                  <span className="text-3xl">🏭</span>
+                  <Factory className="w-8 h-8 text-gold" strokeWidth={1.5} />
                 </div>
                 <div>
                   <h3 className="font-montserrat text-2xl font-semibold text-off-white">Machinery & Equipment</h3>
@@ -138,7 +139,7 @@ export default function Home() {
             <div className="bg-charcoal/30 rounded-xl p-8 border border-silver/10">
               <div className="flex items-center gap-4 mb-6">
                 <div className="w-16 h-16 rounded-full bg-aviation-blue/20 flex items-center justify-center">
-                  <span className="text-3xl">🏗️</span>
+                  <Building2 className="w-8 h-8 text-gold" strokeWidth={1.5} />
                 </div>
                 <div>
                   <h3 className="font-montserrat text-2xl font-semibold text-off-white">Property Development</h3>
