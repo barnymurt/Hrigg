@@ -499,9 +499,9 @@ export const equipment: Equipment[] = [
   {
     id: 'pump-2',
     slug: 'godwin-cd80d-pump',
-    name: 'Godwin Dri-Prime CD80D',
-    shortDescription: 'Compact pump, 96 m³/hr flow',
-    longDescription: 'The Godwin Dri-Prime CD80D pump is an extremely powerful yet compact pump with flow capabilities to 96 m³/hr and discharge heads to 36 metres.',
+    name: 'Godwin Dri-Prime CD80D Pump',
+    shortDescription: '96 m³/hr flow, 36 metre head, compact design',
+    longDescription: 'The Godwin Dri-Prime CD80D pump is an extremely powerful yet compact pump with flow capabilities to 96 m³/hr and discharge heads to 36 metres. Ideal for construction, municipal, and industrial dewatering applications where space is limited.',
     price: 'Price on Application',
     category: 'pumps',
     manufacturer: 'Godwin',
@@ -511,8 +511,8 @@ export const equipment: Equipment[] = [
     specifications: {
       manufacturer: 'Godwin',
       model: 'CD80D',
-      flow: '96 m³/hr',
-      head: '36 metres',
+      maxFlow: '96 m³/hr',
+      maxHead: '36 metres',
     },
     highlights: [
       '96 m³/hr flow capacity',
@@ -525,8 +525,8 @@ export const equipment: Equipment[] = [
     id: 'pump-3',
     slug: 'godwin-sld-mf-55-60-clean-water-pump',
     name: 'Used Godwin SLD MF 55/60 Clean Water Pump',
-    shortDescription: 'Clean water pump',
-    longDescription: 'Used Godwin SLD MF 55/60 clean water pump. Suitable for various water management applications.',
+    shortDescription: 'Clean water transfer pump',
+    longDescription: 'Used Godwin SLD MF 55/60 clean water pump. Suitable for various water management applications including clean water transfer, supply and drainage.',
     price: 'Price on Application',
     category: 'pumps',
     manufacturer: 'Godwin',
@@ -536,6 +536,7 @@ export const equipment: Equipment[] = [
     specifications: {
       manufacturer: 'Godwin',
       model: 'SLD MF 55/60',
+      type: 'Clean Water Pump',
     },
     highlights: [],
     featured: false,
