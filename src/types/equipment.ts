@@ -25,6 +25,24 @@ export interface EquipmentSpecifications {
   lightCoverage?: string
   runtime?: string
   silentMode?: string
+  powerType?: string
+  batteryCapacity?: string
+  batteryRechargeTime?: string
+  illuminatedArea?: string
+  batteryRuntime?: string
+  solarPanels?: string
+  dimensionsL?: string
+  dimensionsW?: string
+  dimensionsH?: string
+  emissions?: string
+  volt?: string
+  engineModel?: string
+  fuel?: string
+  floodlights?: string
+  dimensionsMinLxWxH?: string
+  dimensionsMaxLxWxH?: string
+  co2Reduction?: string
+  runningTime?: string
 }
 
 export interface Equipment {
