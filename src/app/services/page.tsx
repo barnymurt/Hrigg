@@ -70,6 +70,114 @@ export default function ServicesPage() {
         </div>
       </section>
 
+      <section className="py-16 px-6 bg-charcoal/30 border-y border-silver/10">
+        <div className="max-w-7xl mx-auto">
+          <h2 className="font-montserrat text-3xl font-bold text-off-white mb-12 text-center">Featured Projects</h2>
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div className="group relative bg-charcoal rounded-lg overflow-hidden border border-silver/10 hover:border-gold/30 transition-all">
+              <div className="relative h-48 overflow-hidden">
+                <Image
+                  src="https://hazelriggenterprises.co.uk/wp-content/uploads/2020/11/READING-WEB-800-X600-003.jpg"
+                  alt="Investment Properties"
+                  fill
+                  className="object-cover group-hover:scale-105 transition-transform duration-500"
+                  unoptimized
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-charcoal/80 to-transparent" />
+                <div className="absolute top-3 left-3">
+                  <span className="text-xs tracking-wider uppercase text-off-white/90 bg-charcoal/60 backdrop-blur-sm px-2 py-1 rounded">
+                    Investment Properties
+                  </span>
+                </div>
+              </div>
+              <div className="p-4">
+                <h3 className="font-montserrat text-lg font-semibold text-off-white group-hover:text-gold transition-colors">
+                  Reading Business Park
+                </h3>
+                <p className="text-silver/60 text-sm mt-2">Student accommodation conversions</p>
+              </div>
+            </div>
+
+            <div className="group relative bg-charcoal rounded-lg overflow-hidden border border-silver/10 hover:border-gold/30 transition-all">
+              <div className="relative h-48 overflow-hidden">
+                <Image
+                  src="https://hazelriggenterprises.co.uk/wp-content/uploads/2020/11/project.jpg"
+                  alt="Commercial Properties"
+                  fill
+                  className="object-cover group-hover:scale-105 transition-transform duration-500"
+                  unoptimized
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-charcoal/80 to-transparent" />
+                <div className="absolute top-3 left-3">
+                  <span className="text-xs tracking-wider uppercase text-off-white/90 bg-charcoal/60 backdrop-blur-sm px-2 py-1 rounded">
+                    Commercial – Domestic
+                  </span>
+                </div>
+              </div>
+              <div className="p-4">
+                <h3 className="font-montserrat text-lg font-semibold text-off-white group-hover:text-gold transition-colors">
+                  St Thomas Hospital
+                </h3>
+                <p className="text-silver/60 text-sm mt-2">Central London development</p>
+              </div>
+            </div>
+
+            <div className="group relative bg-charcoal rounded-lg overflow-hidden border border-silver/10 hover:border-gold/30 transition-all">
+              <div className="relative h-48 overflow-hidden">
+                <Image
+                  src="https://hazelriggenterprises.co.uk/wp-content/uploads/2020/11/notts-web-800-x-600-003.jpg"
+                  alt="Back to Brick"
+                  fill
+                  className="object-cover group-hover:scale-105 transition-transform duration-500"
+                  unoptimized
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-charcoal/80 to-transparent" />
+                <div className="absolute top-3 left-3">
+                  <span className="text-xs tracking-wider uppercase text-off-white/90 bg-charcoal/60 backdrop-blur-sm px-2 py-1 rounded">
+                    Back to Brick Refurbishment
+                  </span>
+                </div>
+              </div>
+              <div className="p-4">
+                <h3 className="font-montserrat text-lg font-semibold text-off-white group-hover:text-gold transition-colors">
+                  Nottingham Museum
+                </h3>
+                <p className="text-silver/60 text-sm mt-2">Heritage refurbishment</p>
+              </div>
+            </div>
+
+            <div className="group relative bg-charcoal rounded-lg overflow-hidden border border-silver/10 hover:border-gold/30 transition-all">
+              <div className="relative h-48 overflow-hidden">
+                <Image
+                  src="https://hazelriggenterprises.co.uk/wp-content/uploads/2020/11/nine-elms.jpg"
+                  alt="Property Development"
+                  fill
+                  className="object-cover group-hover:scale-105 transition-transform duration-500"
+                  unoptimized
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-charcoal/80 to-transparent" />
+                <div className="absolute top-3 left-3">
+                  <span className="text-xs tracking-wider uppercase text-off-white/90 bg-charcoal/60 backdrop-blur-sm px-2 py-1 rounded">
+                    Property Development
+                  </span>
+                </div>
+              </div>
+              <div className="p-4">
+                <h3 className="font-montserrat text-lg font-semibold text-off-white group-hover:text-gold transition-colors">
+                  Nine Elms Station
+                </h3>
+                <p className="text-silver/60 text-sm mt-2">Rural renovation project</p>
+              </div>
+            </div>
+          </div>
+          <div className="text-center mt-8">
+            <Link href="/projects" className="text-gold hover:text-gold/80 font-medium">
+              View All Projects →
+            </Link>
+          </div>
+        </div>
+      </section>
+
       <section className="py-16 px-6">
         <div className="max-w-4xl mx-auto text-center">
           <h2 className="font-montserrat text-3xl font-bold text-off-white mb-6">Explore Our Range</h2>

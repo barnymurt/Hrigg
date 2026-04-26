@@ -55,6 +55,9 @@ export default function Navigation() {
                   <Link href="/equipment" className="block px-4 py-3 text-off-white/80 hover:text-silver hover:bg-silver/5">
                     Machinery & Equipment
                   </Link>
+                  <Link href="/projects" className="block px-4 py-3 text-off-white/80 hover:text-silver hover:bg-silver/5">
+                    Property Projects
+                  </Link>
                   <Link href="/services#property" className="block px-4 py-3 text-off-white/80 hover:text-silver hover:bg-silver/5">
                     Property Development
                   </Link>
@@ -131,6 +134,7 @@ export default function Navigation() {
           <div className="lg:hidden pb-6 border-t border-silver/10">
             <div className="flex flex-col space-y-4 pt-4">
               <Link href="/services" className="text-off-white/80 hover:text-silver py-2">Services</Link>
+              <Link href="/projects" className="text-off-white/80 hover:text-silver py-2">Projects</Link>
               <Link href="/about" className="text-off-white/80 hover:text-silver py-2">About</Link>
               <Link href="/equipment" className="text-off-white/80 hover:text-silver py-2">Equipment</Link>
               <Link href="/aircraft" className="text-off-white/80 hover:text-silver py-2">Aircraft</Link>
