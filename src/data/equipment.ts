@@ -692,7 +692,7 @@ export const equipment: Equipment[] = [
     shortDescription: '85 ton mobile boat hoist, excellent condition, radio remote',
     longDescription: 'EXCELLENT CONDITION. USED ONLY A FEW TIMES. FIXED FRAME. RADIO REMOTE. 16 X ADJUSTABLE SADDLE PADS. A PURPOSE BUILT 85 TON CRADDLE. ABI MBT120 mobile boat hoist - the professional choice for marine lifting operations.',
     price: 'Price on Application',
-    category: 'trailers',
+    category: 'mobile-boat-hoists',
     manufacturer: 'ABI',
     images: [
       'https://hazelriggenterprises.co.uk/wp-content/uploads/2026/02/MBT120-a-1-1.jpg',
