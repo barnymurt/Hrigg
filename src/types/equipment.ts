@@ -60,6 +60,13 @@ export interface EquipmentSpecifications {
   trackCentre?: string
   heightAtHook?: string
   maxHeight?: string
+  make?: string
+  kVAStandby?: string
+  engineMake?: string
+  alternatorMake?: string
+  alternatorModel?: string
+  controlPanel?: string
+  frequency?: string
 }
 
 export interface Equipment {
