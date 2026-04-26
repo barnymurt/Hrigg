@@ -12,7 +12,7 @@ export default function Home() {
       <Navigation />
       
       {/* Hero Section - Services/Property Focused */}
-      <section className="relative min-h-[90vh] flex items-center justify-center">
+      <section className="relative min-h-screen flex items-center justify-center pt-20">
         <div className="absolute inset-0 bg-gradient-to-b from-charcoal via-charcoal/95 to-charcoal" />
         <div 
           className="absolute inset-0 opacity-20"

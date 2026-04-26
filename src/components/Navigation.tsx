@@ -30,15 +30,14 @@ export default function Navigation() {
   }
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-charcoal/95 backdrop-blur-sm border-b border-silver/10">
-      <div className="max-w-7xl mx-auto px-6">
-        <div className="flex items-center justify-between h-20">
-          <Link href="/" className="flex items-center">
-            <Image src="/images/logo.png" alt="Hazelrigg Enterprises" width={180} height={50} className="h-auto w-auto" priority />
+    <nav className="fixed top-0 left-0 right-0 z-50 bg-charcoal/95 backdrop-blur-sm border-b border-silver/10 h-20">
+      <div className="max-w-7xl mx-auto px-6 h-full">
+        <div className="flex items-center justify-between h-full">
+          <Link href="/" className="flex items-center shrink-0">
+            <Image src="/images/logo.png" alt="Hazelrigg Enterprises" width={140} height={38} className="h-auto w-auto max-h-10" priority />
           </Link>
 
           <div className="hidden lg:flex items-center space-x-6">
-            {/* Services Dropdown - Primary */}
             <div
               className="relative h-full flex items-center"
               onMouseEnter={handleServicesEnter}
@@ -53,7 +52,7 @@ export default function Navigation() {
                     All Services
                   </Link>
                   <Link href="/equipment" className="block px-4 py-3 text-off-white/80 hover:text-silver hover:bg-silver/5">
-                    Machinery & Equipment
+                    Machinery and Equipment
                   </Link>
                   <Link href="/projects" className="block px-4 py-3 text-off-white/80 hover:text-silver hover:bg-silver/5">
                     Property Projects
@@ -65,12 +64,10 @@ export default function Navigation() {
               )}
             </div>
 
-            {/* About - Second Priority */}
             <Link href="/about" className="text-off-white/80 hover:text-silver transition-colors font-medium py-2">
               About
             </Link>
 
-            {/* Equipment Dropdown - Third */}
             <div
               className="relative h-full flex items-center"
               onMouseEnter={handleEquipmentEnter}
@@ -96,20 +93,19 @@ export default function Navigation() {
                   <Link href="/equipment?category=trailers" className="block px-4 py-3 text-off-white/80 hover:text-silver hover:bg-silver/5">
                     Trailers and Transporters
                   </Link>
+                  <Link href="/equipment?category=mobile-boat-hoists" className="block px-4 py-3 text-off-white/80 hover:text-silver hover:bg-silver/5">
+                    Mobile Boat Hoists
+                  </Link>
                   <Link href="/equipment?category=tower-lights" className="block px-4 py-3 text-off-white/80 hover:text-silver hover:bg-silver/5">
                     Tower Lights
                   </Link>
                   <Link href="/equipment?category=engines" className="block px-4 py-3 text-off-white/80 hover:text-silver hover:bg-silver/5">
                     Engines
                   </Link>
-                  <Link href="/equipment?category=mobile-boat-hoists" className="block px-4 py-3 text-off-white/80 hover:text-silver hover:bg-silver/5">
-                    Mobile Boat Hoists
-                  </Link>
                 </div>
               )}
             </div>
 
-            {/* Aircraft - Premium (last) */}
             <Link href="/aircraft" className="text-off-white/80 hover:text-silver transition-colors font-medium py-2">
               Aircraft
             </Link>
@@ -120,8 +116,9 @@ export default function Navigation() {
           </div>
 
           <button 
-            className="lg:hidden text-off-white"
+            className="lg:hidden text-off-white ml-4"
             onClick={() => setIsOpen(!isOpen)}
+            aria-label="Toggle menu"
           >
             <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               {isOpen ? (
@@ -134,14 +131,14 @@ export default function Navigation() {
         </div>
 
         {isOpen && (
-          <div className="lg:hidden pb-6 border-t border-silver/10">
-            <div className="flex flex-col space-y-4 pt-4">
+          <div className="lg:hidden py-4 border-t border-silver/10">
+            <div className="flex flex-col space-y-3">
               <Link href="/services" className="text-off-white/80 hover:text-silver py-2">Services</Link>
               <Link href="/projects" className="text-off-white/80 hover:text-silver py-2">Projects</Link>
               <Link href="/about" className="text-off-white/80 hover:text-silver py-2">About</Link>
               <Link href="/equipment" className="text-off-white/80 hover:text-silver py-2">Equipment</Link>
               <Link href="/aircraft" className="text-off-white/80 hover:text-silver py-2">Aircraft</Link>
-              <Link href="/contact" className="bg-gold hover:bg-gold/90 text-charcoal font-semibold px-5 py-2 rounded text-center">
+              <Link href="/contact" className="bg-gold hover:bg-gold/90 text-charcoal font-semibold px-5 py-3 rounded text-center w-full">
                 Contact Us
               </Link>
             </div>
