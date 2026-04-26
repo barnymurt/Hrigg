@@ -41,6 +41,14 @@ export interface EquipmentSpecifications {
   phase?: string
   engineHours?: string
   current?: string
+  maxFlow?: string
+  suctionSize?: string
+  dischargeSize?: string
+  solidsHandling?: string
+  drive?: string
+  kilowatts?: string
+  fuelCapacity?: string
+  maxHead?: string
   fuel?: string
   floodlights?: string
   dimensionsMinLxWxH?: string
