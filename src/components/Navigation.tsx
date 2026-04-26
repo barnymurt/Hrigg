@@ -33,8 +33,8 @@ export default function Navigation() {
     <nav className="fixed top-0 left-0 right-0 z-50 bg-charcoal/95 backdrop-blur-sm border-b border-silver/10 h-20">
       <div className="max-w-7xl mx-auto px-6 h-full">
         <div className="flex items-center justify-between h-full">
-          <Link href="/" className="flex items-center shrink-0">
-            <Image src="/images/logo.png" alt="Hazelrigg Enterprises" width={140} height={38} className="h-auto w-auto max-h-10" priority />
+          <Link href="/" className="flex items-center shrink-0 -mt-2">
+            <Image src="/images/logo.png" alt="Hazelrigg Enterprises" width={150} height={42} className="h-auto w-auto max-w-[150px]" priority />
           </Link>
 
           <div className="hidden lg:flex items-center space-x-6">
