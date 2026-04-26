@@ -50,13 +50,40 @@ export default function AircraftDetailPage({ params }: { params: { slug: string 
         <div className="max-w-7xl mx-auto">
           <div className="grid lg:grid-cols-3 gap-8">
             <div className="lg:col-span-2">
-              <div className="relative aspect-video rounded-xl overflow-hidden bg-charcoal/50">
+              <div className="relative aspect-video rounded-xl overflow-hidden bg-charcoal/50 group">
                 <Image
                   src={aircraftItem.images[selectedImage]}
                   alt={aircraftItem.name}
                   fill
                   className="object-cover"
                 />
+                
+                {/* Left Arrow */}
+                {aircraftItem.images.length > 1 && (
+                  <button
+                    onClick={() => setSelectedImage(prev => prev === 0 ? aircraftItem.images.length - 1 : prev - 1)}
+                    className="absolute left-4 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-charcoal/80 backdrop-blur-sm border border-silver/20 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 hover:bg-charcoal hover:border-gold/50"
+                    aria-label="Previous image"
+                  >
+                    <svg className="w-5 h-5 text-off-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+                    </svg>
+                  </button>
+                )}
+                
+                {/* Right Arrow */}
+                {aircraftItem.images.length > 1 && (
+                  <button
+                    onClick={() => setSelectedImage(prev => prev === aircraftItem.images.length - 1 ? 0 : prev + 1)}
+                    className="absolute right-4 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-charcoal/80 backdrop-blur-sm border border-silver/20 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 hover:bg-charcoal hover:border-gold/50"
+                    aria-label="Next image"
+                  >
+                    <svg className="w-5 h-5 text-off-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                    </svg>
+                  </button>
+                )}
+
                 <div className="absolute bottom-4 right-4 bg-charcoal/80 backdrop-blur-sm px-3 py-1 rounded text-sm text-silver">
                   {selectedImage + 1} / {aircraftItem.images.length}
                 </div>

@@ -29,70 +29,74 @@ export default function AircraftPage() {
     <main className="min-h-screen bg-charcoal">
       <Navigation />
       
-      <section className="pt-32 pb-16 px-6">
+      {/* Hero Section - Luxury */}
+      <section className="relative pt-32 pb-20 px-6">
         <div className="max-w-7xl mx-auto">
-          <h1 className="font-montserrat text-5xl font-bold text-off-white mb-4">Executive Aircraft</h1>
-          <p className="text-silver text-lg">Discover our curated collection of {aircraft.length} premium aircraft</p>
+          <div className="max-w-3xl">
+            <span className="inline-block text-gold/80 text-sm tracking-[0.3em] uppercase mb-6">Curated Collection</span>
+            <h1 className="font-montserrat text-5xl md:text-6xl font-bold text-off-white mb-6 leading-tight">
+              Executive Aircraft
+            </h1>
+            <p className="text-silver/70 text-lg leading-relaxed max-w-xl">
+              A selection of {aircraft.length} premium aircraft, sourced and vetted to the highest standards for discerning clients worldwide.
+            </p>
+          </div>
         </div>
       </section>
 
-      <section className="sticky top-20 z-40 bg-charcoal/95 backdrop-blur-sm border-y border-silver/10 py-4">
+      {/* Filter Bar - Minimal */}
+      <section className="sticky top-20 z-40 bg-charcoal/98 backdrop-blur-md border-y border-gold/10 py-5">
         <div className="max-w-7xl mx-auto px-6">
-          <div className="flex flex-wrap items-center gap-4">
-            <div className="flex items-center gap-2">
-              <span className="text-silver/60 text-sm">Category:</span>
-              <select 
-                className="bg-charcoal border border-silver/20 text-off-white px-3 py-2 rounded text-sm focus:border-gold outline-none"
-                value={filter.category || ''}
-                onChange={(e) => setFilter({...filter, category: e.target.value as Aircraft['category'] || undefined})}
-              >
-                <option value="">All Categories</option>
-                <option value="jet">Jets</option>
-                <option value="turboprop">Turboprops</option>
-                <option value="helicopter">Helicopters</option>
-              </select>
-            </div>
+          <div className="flex flex-wrap items-center gap-6">
+            <select 
+              className="bg-transparent border-b border-silver/30 text-off-white/80 px-2 py-2 text-sm focus:border-gold outline-none transition-colors"
+              value={filter.category || ''}
+              onChange={(e) => setFilter({...filter, category: e.target.value as Aircraft['category'] || undefined})}
+            >
+              <option value="">All Categories</option>
+              <option value="jet">Jets</option>
+              <option value="turboprop">Turboprops</option>
+              <option value="helicopter">Helicopters</option>
+            </select>
             
-            <div className="flex items-center gap-2">
-              <span className="text-silver/60 text-sm">Manufacturer:</span>
-              <select 
-                className="bg-charcoal border border-silver/20 text-off-white px-3 py-2 rounded text-sm focus:border-gold outline-none"
-                value={filter.manufacturer || ''}
-                onChange={(e) => setFilter({...filter, manufacturer: e.target.value || undefined})}
-              >
-                <option value="">All Manufacturers</option>
-                {manufacturers.map(m => (
-                  <option key={m} value={m}>{m}</option>
-                ))}
-              </select>
-            </div>
+            <select 
+              className="bg-transparent border-b border-silver/30 text-off-white/80 px-2 py-2 text-sm focus:border-gold outline-none transition-colors"
+              value={filter.manufacturer || ''}
+              onChange={(e) => setFilter({...filter, manufacturer: e.target.value || undefined})}
+            >
+              <option value="">All Manufacturers</option>
+              {manufacturers.map(m => (
+                <option key={m} value={m}>{m}</option>
+              ))}
+            </select>
 
             {(filter.category || filter.manufacturer) && (
               <button 
-                className="text-gold text-sm hover:underline"
+                className="text-gold/70 text-sm hover:text-gold transition-colors"
                 onClick={() => setFilter({})}
               >
-                Clear Filters
+                Clear
               </button>
             )}
 
-            <div className="ml-auto text-silver/60 text-sm">
-              Showing {filteredAircraft.length} of {aircraft.length} aircraft
+            <div className="ml-auto text-silver/50 text-sm font-light">
+              {filteredAircraft.length} aircraft
             </div>
           </div>
         </div>
       </section>
 
-      <section className="py-12 px-6">
+      {/* Aircraft Grid - Luxury Cards */}
+      <section className="py-16 px-6">
         <div className="max-w-7xl mx-auto">
           {filteredAircraft.length === 0 ? (
-            <div className="text-center py-20">
-              <p className="text-silver mb-4">No aircraft match your filters</p>
+            <div className="text-center py-32">
+              <p className="text-silver/60 mb-6">No aircraft match your criteria</p>
               <button 
-                className="text-gold hover:underline"
+                className="text-gold/80 hover:text-gold transition-colors"
                 onClick={() => setFilter({})}
               >
-                Clear all filters
+                View all aircraft
               </button>
             </div>
           ) : (
@@ -101,31 +105,42 @@ export default function AircraftPage() {
                 <Link 
                   key={item.id}
                   href={`/aircraft/${item.slug}`}
-                  className="group bg-charcoal/50 rounded-xl overflow-hidden border border-silver/10 hover:border-gold/30 transition-all duration-300"
+                  className="group relative"
                 >
-                  <div className="relative h-64 overflow-hidden">
+                  {/* Image Container */}
+                  <div className="relative aspect-[4/3] rounded-lg overflow-hidden mb-6">
                     <Image
                       src={item.images[0]}
                       alt={item.name}
                       fill
-                      className="object-cover group-hover:scale-105 transition-transform duration-500"
+                      className="object-cover transition-transform duration-700 group-hover:scale-105"
                     />
-                    <div className="absolute top-4 left-4 bg-charcoal/80 backdrop-blur-sm px-3 py-1 rounded text-xs text-silver uppercase tracking-wider">
-                      {item.category}
+                    <div className="absolute inset-0 bg-gradient-to-t from-charcoal/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                    <div className="absolute top-4 left-4">
+                      <span className="text-xs tracking-widest uppercase text-off-white/90 bg-charcoal/60 backdrop-blur-sm px-3 py-1.5 rounded">
+                        {item.category}
+                      </span>
                     </div>
                   </div>
-                  <div className="p-6">
-                    <div className="flex items-center justify-between mb-2">
-                      <span className="text-gold text-sm font-medium">{item.manufacturer}</span>
-                      <span className="text-off-white/40 text-xs">{item.specifications.year}</span>
-                    </div>
-                    <h3 className="font-montserrat text-xl font-semibold text-off-white mb-2">{item.name}</h3>
-                    <p className="text-silver/80 text-sm mb-4 line-clamp-2">{item.shortDescription}</p>
-                    <div className="flex items-center justify-between pt-4 border-t border-silver/10">
-                      <span className="text-off-white/60 text-sm">View Specifications</span>
-                      <span className="text-gold text-sm group-hover:text-gold/80 transition-colors">→</span>
+                  
+                  {/* Content */}
+                  <div className="space-y-3">
+                    <p className="text-gold/80 text-xs tracking-[0.2em] uppercase">{item.manufacturer}</p>
+                    <h3 className="font-montserrat text-xl text-off-white group-hover:text-gold transition-colors duration-300">
+                      {item.name}
+                    </h3>
+                    <p className="text-silver/60 text-sm leading-relaxed line-clamp-2">
+                      {item.shortDescription}
+                    </p>
+                    <div className="flex items-center gap-4 pt-2 text-xs text-silver/50">
+                      <span>{item.specifications.year}</span>
+                      <span className="w-1 h-1 rounded-full bg-silver/30" />
+                      <span className="capitalize">{item.specifications.condition}</span>
                     </div>
                   </div>
+
+                  {/* Hover Accent Line */}
+                  <div className="absolute bottom-0 left-0 w-0 h-0.5 bg-gold transition-all duration-500 group-hover:w-full" />
                 </Link>
               ))}
             </div>
@@ -133,53 +148,52 @@ export default function AircraftPage() {
         </div>
       </section>
 
-      <section className="py-16 border-t border-silver/10">
-        <div className="max-w-4xl mx-auto px-6 text-center">
-          <h2 className="font-montserrat text-3xl font-bold text-off-white mb-4">Looking for Something Specific?</h2>
-          <p className="text-silver mb-8">
-            Don&apos;t see the aircraft you need? Our global sourcing network can locate aircraft to meet your exact specifications.
+      {/* Contact Section */}
+      <section className="py-24 px-6 border-t border-silver/10">
+        <div className="max-w-3xl mx-auto text-center">
+          <h2 className="font-montserrat text-3xl font-light text-off-white mb-6">
+            Seeking a specific aircraft?
+          </h2>
+          <p className="text-silver/60 mb-10 leading-relaxed">
+            Our global network can source aircraft to meet your exact specifications. Contact our team for personalized assistance.
           </p>
           <Link 
             href="/contact" 
-            className="inline-block bg-gold hover:bg-gold/90 text-charcoal font-semibold px-8 py-4 rounded transition-colors"
+            className="inline-block bg-gold hover:bg-gold/90 text-charcoal font-medium px-10 py-4 rounded transition-all duration-300"
           >
-            Contact Our Team
+            Enquire Now
           </Link>
         </div>
       </section>
 
-      <footer className="py-12 border-t border-silver/10">
+      <footer className="py-16 border-t border-silver/10">
         <div className="max-w-7xl mx-auto px-6">
-          <div className="grid md:grid-cols-4 gap-8 mb-8">
+          <div className="flex flex-col md:flex-row justify-between items-start gap-12">
             <div>
-              <h4 className="font-montserrat text-lg font-semibold text-off-white mb-4">HAZELRIGG</h4>
-              <p className="text-silver/60 text-sm">Premium pre-owned aircraft and industrial equipment sourced globally.</p>
+              <Image src="/images/logo.png" alt="Hazelrigg Enterprises" width={160} height={44} className="h-auto w-auto mb-6" unoptimized />
+              <p className="text-silver/50 text-sm max-w-xs leading-relaxed">
+                Premium aircraft and industrial equipment sourced globally for discerning clients.
+              </p>
             </div>
-            <div>
-              <h5 className="text-off-white/80 font-medium mb-3">Aircraft</h5>
-              <ul className="space-y-2 text-silver/60 text-sm">
-                <li><Link href="/aircraft?category=jet" className="hover:text-silver">Jets</Link></li>
-                <li><Link href="/aircraft?category=turboprop" className="hover:text-silver">Turboprops</Link></li>
-                <li><Link href="/aircraft?category=helicopter" className="hover:text-silver">Helicopters</Link></li>
-              </ul>
-            </div>
-            <div>
-              <h5 className="text-off-white/80 font-medium mb-3">Equipment</h5>
-              <ul className="space-y-2 text-silver/60 text-sm">
-                <li><Link href="/plant-equipment" className="hover:text-silver">Cranes</Link></li>
-                <li><Link href="/plant-equipment" className="hover:text-silver">Generators</Link></li>
-                <li><Link href="/plant-equipment" className="hover:text-silver">Pumps</Link></li>
-              </ul>
-            </div>
-            <div>
-              <h5 className="text-off-white/80 font-medium mb-3">Contact</h5>
-              <ul className="space-y-2 text-silver/60 text-sm">
-                <li>0333 772 3803</li>
-                <li>info@hazelriggenterprises.co.uk</li>
-              </ul>
+            <div className="flex gap-16">
+              <div>
+                <h5 className="text-off-white/80 text-sm font-medium mb-4">Aircraft</h5>
+                <ul className="space-y-3 text-silver/50 text-sm">
+                  <li><Link href="/aircraft?category=jet" className="hover:text-gold transition-colors">Jets</Link></li>
+                  <li><Link href="/aircraft?category=turboprop" className="hover:text-gold transition-colors">Turboprops</Link></li>
+                  <li><Link href="/aircraft?category=helicopter" className="hover:text-gold transition-colors">Helicopters</Link></li>
+                </ul>
+              </div>
+              <div>
+                <h5 className="text-off-white/80 text-sm font-medium mb-4">Contact</h5>
+                <ul className="space-y-3 text-silver/50 text-sm">
+                  <li>0333 772 3903</li>
+                  <li>info@hazelriggenterprises.co.uk</li>
+                </ul>
+              </div>
             </div>
           </div>
-          <div className="pt-8 border-t border-silver/10 text-center text-silver/40 text-sm">
+          <div className="pt-12 mt-12 border-t border-silver/10 text-center text-silver/30 text-sm">
             © {new Date().getFullYear()} Hazelrigg Enterprises Ltd. All rights reserved.
           </div>
         </div>

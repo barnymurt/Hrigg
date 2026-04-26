@@ -18,6 +18,13 @@ export interface EquipmentSpecifications {
   size?: string
   alternator?: string
   delivery?: string
+  flag?: string
+  motorPower?: string
+  insideClearWidth?: string
+  type?: string
+  lightCoverage?: string
+  runtime?: string
+  silentMode?: string
 }
 
 export interface Equipment {

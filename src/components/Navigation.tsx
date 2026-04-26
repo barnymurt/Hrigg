@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useRef } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 
@@ -8,11 +8,26 @@ export default function Navigation() {
   const [isOpen, setIsOpen] = useState(false)
   const [servicesOpen, setServicesOpen] = useState(false)
   const [equipmentOpen, setEquipmentOpen] = useState(false)
+  const servicesTimeout = useRef<NodeJS.Timeout | null>(null)
+  const equipmentTimeout = useRef<NodeJS.Timeout | null>(null)
 
-  const handleServicesMouseEnter = () => setServicesOpen(true)
-  const handleServicesMouseLeave = () => setServicesOpen(false)
-  const handleEquipmentMouseEnter = () => setEquipmentOpen(true)
-  const handleEquipmentMouseLeave = () => setEquipmentOpen(false)
+  const handleServicesEnter = () => {
+    if (servicesTimeout.current) clearTimeout(servicesTimeout.current)
+    setServicesOpen(true)
+  }
+
+  const handleServicesLeave = () => {
+    servicesTimeout.current = setTimeout(() => setServicesOpen(false), 150)
+  }
+
+  const handleEquipmentEnter = () => {
+    if (equipmentTimeout.current) clearTimeout(equipmentTimeout.current)
+    setEquipmentOpen(true)
+  }
+
+  const handleEquipmentLeave = () => {
+    equipmentTimeout.current = setTimeout(() => setEquipmentOpen(false), 150)
+  }
 
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 bg-charcoal/95 backdrop-blur-sm border-b border-silver/10">
@@ -24,23 +39,23 @@ export default function Navigation() {
 
           <div className="hidden lg:flex items-center space-x-6">
             {/* Services Dropdown - Primary */}
-            <div 
-              className="relative"
-              onMouseEnter={handleServicesMouseEnter}
-              onMouseLeave={handleServicesMouseLeave}
+            <div
+              className="relative h-full flex items-center"
+              onMouseEnter={handleServicesEnter}
+              onMouseLeave={handleServicesLeave}
             >
               <button className="text-off-white/80 hover:text-silver transition-colors font-medium py-2">
                 Services
               </button>
               {servicesOpen && (
                 <div className="absolute top-full left-0 mt-2 w-56 bg-charcoal border border-silver/20 rounded-lg shadow-xl py-2 z-50">
-                  <Link href="/services" className="block px-4 py-2 text-off-white/80 hover:text-silver hover:bg-silver/5">
+                  <Link href="/services" className="block px-4 py-3 text-off-white/80 hover:text-silver hover:bg-silver/5">
                     All Services
                   </Link>
-                  <Link href="/equipment" className="block px-4 py-2 text-off-white/80 hover:text-silver hover:bg-silver/5">
+                  <Link href="/equipment" className="block px-4 py-3 text-off-white/80 hover:text-silver hover:bg-silver/5">
                     Machinery & Equipment
                   </Link>
-                  <Link href="/services#property" className="block px-4 py-2 text-off-white/80 hover:text-silver hover:bg-silver/5">
+                  <Link href="/services#property" className="block px-4 py-3 text-off-white/80 hover:text-silver hover:bg-silver/5">
                     Property Development
                   </Link>
                 </div>
@@ -53,26 +68,26 @@ export default function Navigation() {
             </Link>
 
             {/* Equipment Dropdown - Third */}
-            <div 
-              className="relative"
-              onMouseEnter={handleEquipmentMouseEnter}
-              onMouseLeave={handleEquipmentMouseLeave}
+            <div
+              className="relative h-full flex items-center"
+              onMouseEnter={handleEquipmentEnter}
+              onMouseLeave={handleEquipmentLeave}
             >
               <button className="text-off-white/80 hover:text-silver transition-colors font-medium py-2">
                 Equipment
               </button>
               {equipmentOpen && (
                 <div className="absolute top-full left-0 mt-2 w-48 bg-charcoal border border-silver/20 rounded-lg shadow-xl py-2 z-50">
-                  <Link href="/equipment" className="block px-4 py-2 text-off-white/80 hover:text-silver hover:bg-silver/5">
+                  <Link href="/equipment" className="block px-4 py-3 text-off-white/80 hover:text-silver hover:bg-silver/5">
                     All Equipment
                   </Link>
-                  <Link href="/equipment?category=cranes" className="block px-4 py-2 text-off-white/80 hover:text-silver hover:bg-silver/5">
+                  <Link href="/equipment?category=cranes" className="block px-4 py-3 text-off-white/80 hover:text-silver hover:bg-silver/5">
                     Cranes
                   </Link>
-                  <Link href="/equipment?category=generators" className="block px-4 py-2 text-off-white/80 hover:text-silver hover:bg-silver/5">
+                  <Link href="/equipment?category=generators" className="block px-4 py-3 text-off-white/80 hover:text-silver hover:bg-silver/5">
                     Generators
                   </Link>
-                  <Link href="/equipment?category=pumps" className="block px-4 py-2 text-off-white/80 hover:text-silver hover:bg-silver/5">
+                  <Link href="/equipment?category=pumps" className="block px-4 py-3 text-off-white/80 hover:text-silver hover:bg-silver/5">
                     Pumps
                   </Link>
                 </div>

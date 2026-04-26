@@ -1,14 +1,23 @@
 'use client'
 
-import { useState, useMemo } from 'react'
+import { useState, useMemo, useEffect } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
+import { useSearchParams } from 'next/navigation'
 import Navigation from '@/components/Navigation'
 import { equipment, equipmentCategories, getEquipmentByCategory } from '@/data/equipment'
 import { Equipment } from '@/types/equipment'
 
 export default function EquipmentPage() {
+  const searchParams = useSearchParams()
   const [filter, setFilter] = useState<{ category?: Equipment['category'] }>({})
+
+  useEffect(() => {
+    const category = searchParams.get('category')
+    if (category && ['cranes', 'generators', 'pumps'].includes(category)) {
+      setFilter({ category: category as Equipment['category'] })
+    }
+  }, [searchParams])
 
   const filteredEquipment = useMemo(() => {
     if (filter.category) {
