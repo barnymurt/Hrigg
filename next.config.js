@@ -4,9 +4,14 @@ const nextConfig = {
     remotePatterns: [
       {
         protocol: 'https',
-        hostname: '**',
+        hostname: 'hazelriggenterprises.co.uk',
+      },
+      {
+        protocol: 'https',
+        hostname: '**.hazelriggenterprises.co.uk',
       },
     ],
+    unoptimized: true,
   },
 }
 
