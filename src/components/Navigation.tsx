@@ -94,7 +94,7 @@ export default function Navigation() {
                     Pumps
                   </Link>
                   <Link href="/equipment?category=trailers" className="block px-4 py-3 text-off-white/80 hover:text-silver hover:bg-silver/5">
-                    Trailers & Transporters
+                    Trailers and Transporters
                   </Link>
                   <Link href="/equipment?category=tower-lights" className="block px-4 py-3 text-off-white/80 hover:text-silver hover:bg-silver/5">
                     Tower Lights

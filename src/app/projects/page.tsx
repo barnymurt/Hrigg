@@ -14,7 +14,7 @@ const projects = [
   {
     slug: 'commercial-domestic',
     title: 'St Thomas Hospital London',
-    label: 'Commercial – Domestic Properties',
+    label: 'Commercial Domestic',
     description: 'Comprehensive commercial and domestic property development in Central London.',
     image: 'https://hazelriggenterprises.co.uk/wp-content/uploads/2020/11/project.jpg',
     details: 'High-quality commercial and domestic property services in London.',

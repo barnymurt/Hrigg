@@ -110,7 +110,7 @@ export default function ServicesPage() {
                 <div className="absolute inset-0 bg-gradient-to-t from-charcoal/80 to-transparent" />
                 <div className="absolute top-3 left-3">
                   <span className="text-xs tracking-wider uppercase text-off-white/90 bg-charcoal/60 backdrop-blur-sm px-2 py-1 rounded">
-                    Commercial – Domestic
+                    Commercial Domestic
                   </span>
                 </div>
               </div>
