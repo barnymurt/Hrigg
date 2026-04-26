@@ -60,6 +60,8 @@ export interface EquipmentSpecifications {
   depthMoulded?: string
   generators?: string
   class?: string
+  frameType?: string
+  saddlePads?: string
   fuel?: string
   floodlights?: string
   dimensionsMinLxWxH?: string
