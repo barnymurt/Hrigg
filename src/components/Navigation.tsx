@@ -102,6 +102,9 @@ export default function Navigation() {
                   <Link href="/equipment?category=engines" className="block px-4 py-3 text-off-white/80 hover:text-silver hover:bg-silver/5">
                     Engines
                   </Link>
+                  <Link href="/equipment?category=mobile-boat-hoists" className="block px-4 py-3 text-off-white/80 hover:text-silver hover:bg-silver/5">
+                    Mobile Boat Hoists
+                  </Link>
                 </div>
               )}
             </div>

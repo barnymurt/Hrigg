@@ -861,6 +861,31 @@ export const equipment: Equipment[] = [
     featured: true,
   },
 
+  // MOBILE BOAT HOISTS
+  {
+    id: 'trail-8',
+    slug: 'mobile-boat-hoist-mbh-500',
+    name: 'Mobile Boat Hoist MBH 500',
+    shortDescription: '500 ton capacity mobile boat hoist for launching and dry-docking',
+    longDescription: 'Mobile Boat Hoist for boat launching and dry-docking. More information available on request.',
+    price: 'SOLD',
+    category: 'mobile-boat-hoists',
+    manufacturer: 'Unknown',
+    images: [
+      'https://hazelriggenterprises.co.uk/wp-content/uploads/2025/06/image-lift500-01.jpg',
+      'https://hazelriggenterprises.co.uk/wp-content/uploads/2025/06/image-lift500-02.jpg',
+    ],
+    specifications: {
+      type: 'Mobile Boat Hoist',
+      use: 'Boat launching and dry-docking',
+    },
+    highlights: [
+      '500 ton capacity',
+      'Mobile operation',
+    ],
+    featured: false,
+  },
+
   // TOWER LIGHTS
   {
     id: 'tower-1',
@@ -978,7 +1003,8 @@ export const equipmentCategories = [
   { name: 'Cranes', slug: 'cranes', count: equipment.filter(e => e.category === 'cranes').length },
   { name: 'Power Generators', slug: 'generators', count: equipment.filter(e => e.category === 'generators').length },
   { name: 'Pumps', slug: 'pumps', count: equipment.filter(e => e.category === 'pumps').length },
-  { name: 'Trailers & Transporters', slug: 'trailers', count: equipment.filter(e => e.category === 'trailers').length },
+  { name: 'Trailers and Transporters', slug: 'trailers', count: equipment.filter(e => e.category === 'trailers').length },
+  { name: 'Mobile Boat Hoists', slug: 'mobile-boat-hoists', count: equipment.filter(e => e.category === 'mobile-boat-hoists').length },
   { name: 'Tower Lights', slug: 'tower-lights', count: equipment.filter(e => e.category === 'tower-lights').length },
   { name: 'Engines', slug: 'engines', count: equipment.filter(e => e.category === 'engines').length },
 ]

@@ -70,6 +70,7 @@ export interface EquipmentSpecifications {
   driveAxles?: number
   steeredBogies?: number
   rpm?: string
+  use?: string
   floodlights?: string
   dimensionsMinLxWxH?: string
   dimensionsMaxLxWxH?: string
@@ -109,7 +110,7 @@ export interface Equipment {
   shortDescription: string
   longDescription: string
   price: string
-  category: 'cranes' | 'generators' | 'pumps' | 'trailers' | 'tower-lights' | 'engines'
+  category: 'cranes' | 'generators' | 'pumps' | 'trailers' | 'tower-lights' | 'engines' | 'mobile-boat-hoists'
   manufacturer: string
   images: string[]
   specifications: EquipmentSpecifications
