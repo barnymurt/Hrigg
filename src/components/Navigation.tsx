@@ -57,9 +57,6 @@ export default function Navigation() {
                   <Link href="/projects" className="block px-4 py-3 text-off-white/80 hover:text-silver hover:bg-silver/5">
                     Property Projects
                   </Link>
-                  <Link href="/services#property" className="block px-4 py-3 text-off-white/80 hover:text-silver hover:bg-silver/5">
-                    Property Development
-                  </Link>
                 </div>
               )}
             </div>
