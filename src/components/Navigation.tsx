@@ -77,7 +77,7 @@ export default function Navigation() {
                 Equipment
               </button>
               {equipmentOpen && (
-                <div className="absolute top-full left-0 mt-2 w-48 bg-charcoal border border-silver/20 rounded-lg shadow-xl py-2 z-50">
+                <div className="absolute top-full left-0 mt-2 w-56 bg-charcoal border border-silver/20 rounded-lg shadow-xl py-2 z-50">
                   <Link href="/equipment" className="block px-4 py-3 text-off-white/80 hover:text-silver hover:bg-silver/5">
                     All Equipment
                   </Link>
@@ -85,10 +85,19 @@ export default function Navigation() {
                     Cranes
                   </Link>
                   <Link href="/equipment?category=generators" className="block px-4 py-3 text-off-white/80 hover:text-silver hover:bg-silver/5">
-                    Generators
+                    Power Generators
                   </Link>
                   <Link href="/equipment?category=pumps" className="block px-4 py-3 text-off-white/80 hover:text-silver hover:bg-silver/5">
                     Pumps
+                  </Link>
+                  <Link href="/equipment?category=trailers" className="block px-4 py-3 text-off-white/80 hover:text-silver hover:bg-silver/5">
+                    Trailers & Transporters
+                  </Link>
+                  <Link href="/equipment?category=tower-lights" className="block px-4 py-3 text-off-white/80 hover:text-silver hover:bg-silver/5">
+                    Tower Lights
+                  </Link>
+                  <Link href="/equipment?category=engines" className="block px-4 py-3 text-off-white/80 hover:text-silver hover:bg-silver/5">
+                    Engines
                   </Link>
                 </div>
               )}
