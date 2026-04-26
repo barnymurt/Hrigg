@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useMemo, useEffect } from 'react'
+import { useState, useMemo, useEffect, Suspense } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 import { useSearchParams } from 'next/navigation'
@@ -8,13 +8,13 @@ import Navigation from '@/components/Navigation'
 import { equipment, equipmentCategories, getEquipmentByCategory } from '@/data/equipment'
 import { Equipment } from '@/types/equipment'
 
-export default function EquipmentPage() {
+function EquipmentContent() {
   const searchParams = useSearchParams()
   const [filter, setFilter] = useState<{ category?: Equipment['category'] }>({})
 
   useEffect(() => {
     const category = searchParams.get('category')
-    if (category && ['cranes', 'generators', 'pumps'].includes(category)) {
+    if (category && ['cranes', 'generators', 'pumps', 'trailers', 'tower-lights', 'engines'].includes(category)) {
       setFilter({ category: category as Equipment['category'] })
     }
   }, [searchParams])
@@ -27,9 +27,7 @@ export default function EquipmentPage() {
   }, [filter])
 
   return (
-    <main className="min-h-screen bg-charcoal">
-      <Navigation />
-      
+    <>
       <section className="pt-32 pb-16 px-6">
         <div className="max-w-7xl mx-auto">
           <h1 className="font-montserrat text-5xl font-bold text-off-white mb-4">Plant & Equipment</h1>
@@ -106,7 +104,42 @@ export default function EquipmentPage() {
           </div>
         </div>
       </section>
+    </>
+  )
+}
 
+function EquipmentLoading() {
+  return (
+    <>
+      <section className="pt-32 pb-16 px-6">
+        <div className="max-w-7xl mx-auto">
+          <h1 className="font-montserrat text-5xl font-bold text-off-white mb-4">Plant & Equipment</h1>
+          <p className="text-silver text-lg max-w-3xl">
+            Industrial and commercial machinery sourced globally. Specialising in shipping, port operations, energy, and infrastructure sectors.
+          </p>
+        </div>
+      </section>
+      <section className="px-6 pb-16">
+        <div className="max-w-7xl mx-auto">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {[1,2,3,4,5,6].map(i => (
+              <div key={i} className="bg-charcoal/50 rounded-xl overflow-hidden border border-silver/10 h-80 animate-pulse" />
+            ))}
+          </div>
+        </div>
+      </section>
+    </>
+  )
+}
+
+export default function EquipmentPage() {
+  return (
+    <main className="min-h-screen bg-charcoal">
+      <Navigation />
+      <Suspense fallback={<EquipmentLoading />}>
+        <EquipmentContent />
+      </Suspense>
+      
       <section className="py-16 px-6 bg-charcoal/50 border-t border-silver/10">
         <div className="max-w-4xl mx-auto text-center">
           <h2 className="font-montserrat text-3xl font-bold text-off-white mb-4">Looking for Something Specific?</h2>
