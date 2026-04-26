@@ -63,6 +63,13 @@ export interface EquipmentSpecifications {
   frameType?: string
   saddlePads?: string
   fuel?: string
+  payload?: string
+  deadWeight?: string
+  totalWeight?: string
+  axleLines?: number
+  driveAxles?: number
+  steeredBogies?: number
+  rpm?: string
   floodlights?: string
   dimensionsMinLxWxH?: string
   dimensionsMaxLxWxH?: string
