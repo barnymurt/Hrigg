@@ -43,6 +43,8 @@ export interface EquipmentSpecifications {
   dimensionsMaxLxWxH?: string
   co2Reduction?: string
   runningTime?: string
+  quantity?: number
+  usage?: string
 }
 
 export interface Equipment {
