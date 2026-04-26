@@ -37,6 +37,10 @@ export interface EquipmentSpecifications {
   emissions?: string
   volt?: string
   engineModel?: string
+  kVAPrime?: string
+  phase?: string
+  engineHours?: string
+  current?: string
   fuel?: string
   floodlights?: string
   dimensionsMinLxWxH?: string
