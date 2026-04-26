@@ -67,6 +67,7 @@ export interface EquipmentSpecifications {
   alternatorModel?: string
   controlPanel?: string
   frequency?: string
+  housing?: string
 }
 
 export interface Equipment {
