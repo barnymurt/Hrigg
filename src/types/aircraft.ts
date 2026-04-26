@@ -30,6 +30,18 @@ export interface AircraftSpecifications {
   maintenanceProgram?: string
   trackingSystem?: string
   lastRefurb?: string
+  completeLogs?: string
+  propManufacturer?: string
+  propBlades?: number
+  adsb?: string
+  waas?: string
+  svt?: string
+  maximumSpeed?: string
+  cruiseSpeed?: string
+  range?: string
+  maxAltitude?: string
+  emptyWeight?: string
+  maxTakeoffWeight?: string
 }
 
 export interface Aircraft {
