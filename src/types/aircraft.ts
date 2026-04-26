@@ -5,12 +5,21 @@ export interface AircraftSpecifications {
   serialNumber?: string
   registration?: string
   totalTime?: string
+  totalLandings?: string
   condition: string
   flightRules?: string
   engines?: string
+  engineMake?: string
+  engineModel?: string
+  engine1Time?: string
+  engineTBO?: string
   avionic?: string
   interior?: string
   exterior?: string
+  exteriorYear?: number
+  interiorYear?: number
+  galley?: string
+  inspectionStatus?: string
   performance?: string
 }
 
