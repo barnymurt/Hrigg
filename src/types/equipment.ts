@@ -45,6 +45,21 @@ export interface EquipmentSpecifications {
   runningTime?: string
   quantity?: number
   usage?: string
+  wheelAxis?: string
+  clearInsideWidth?: string
+  translationSpeed?: string
+  groundPressure?: string
+  steeringRadius?: string
+  location?: string
+  span?: string
+  hoistingHeight?: string
+  hoistType?: string
+  control?: string
+  mainVoltage?: string
+  gauge?: string
+  trackCentre?: string
+  heightAtHook?: string
+  maxHeight?: string
 }
 
 export interface Equipment {
