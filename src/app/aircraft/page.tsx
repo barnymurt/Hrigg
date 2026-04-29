@@ -4,8 +4,10 @@ import { useState, useMemo } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 import Navigation from '@/components/Navigation'
+import Footer from '@/components/Footer'
 import { aircraft } from '@/data/aircraft'
 import { Aircraft, AircraftFilter } from '@/types/aircraft'
+import { CONTACT } from '@/constants'
 
 function AircraftCard({ item }: { item: Aircraft }) {
   const [selectedImage, setSelectedImage] = useState(0)
@@ -205,38 +207,7 @@ export default function AircraftPage() {
         </div>
       </section>
 
-      <footer className="py-16 border-t border-silver/10">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="flex flex-col md:flex-row justify-between items-start gap-12">
-            <div>
-              <Image src="/images/logo.png" alt="Hazelrigg Enterprises" width={160} height={44} className="h-auto w-auto mb-6" unoptimized />
-              <p className="text-silver/50 text-sm max-w-xs leading-relaxed">
-                Premium aircraft and industrial equipment sourced globally for discerning clients.
-              </p>
-            </div>
-            <div className="flex gap-16">
-              <div>
-                <h5 className="text-off-white/80 text-sm font-medium mb-4">Aircraft</h5>
-                <ul className="space-y-3 text-silver/50 text-sm">
-                  <li><Link href="/aircraft?category=jet" className="hover:text-gold transition-colors">Jets</Link></li>
-                  <li><Link href="/aircraft?category=turboprop" className="hover:text-gold transition-colors">Turboprops</Link></li>
-                  <li><Link href="/aircraft?category=helicopter" className="hover:text-gold transition-colors">Helicopters</Link></li>
-                </ul>
-              </div>
-              <div>
-                <h5 className="text-off-white/80 text-sm font-medium mb-4">Contact</h5>
-                <ul className="space-y-3 text-silver/50 text-sm">
-                  <li>0333 772 3903</li>
-                  <li>info@hazelriggenterprises.co.uk</li>
-                </ul>
-              </div>
-            </div>
-          </div>
-          <div className="pt-12 mt-12 border-t border-silver/10 text-center text-silver/30 text-sm">
-            © {new Date().getFullYear()} Hazelrigg Enterprises Ltd. All rights reserved.
-          </div>
-        </div>
-      </footer>
+      <Footer />
     </main>
   )
 }

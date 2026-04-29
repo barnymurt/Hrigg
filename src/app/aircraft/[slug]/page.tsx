@@ -5,7 +5,9 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { notFound } from 'next/navigation'
 import Navigation from '@/components/Navigation'
+import Footer from '@/components/Footer'
 import { getAircraftBySlug, aircraft } from '@/data/aircraft'
+import { CONTACT } from '@/constants'
 
 export default function AircraftDetailPage({ params }: { params: { slug: string } }) {
   const aircraftItem = getAircraftBySlug(params.slug)
@@ -249,7 +251,7 @@ export default function AircraftDetailPage({ params }: { params: { slug: string 
                 
                 <div className="mt-6 pt-6 border-t border-silver/10">
                   <p className="text-silver/60 text-sm mb-2">Prefer to speak directly?</p>
-                  <a href="tel:03337723803" className="text-gold font-medium hover:underline">0333 772 3803</a>
+                  <a href={CONTACT.phoneLink} className="text-gold font-medium hover:underline">{CONTACT.phone}</a>
                 </div>
               </div>
             </div>
@@ -287,42 +289,7 @@ export default function AircraftDetailPage({ params }: { params: { slug: string 
         </section>
       )}
 
-      <footer className="py-12 border-t border-silver/10">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="grid md:grid-cols-4 gap-8 mb-8">
-            <div>
-              <h4 className="font-montserrat text-lg font-semibold text-off-white mb-4">HAZELRIGG</h4>
-              <p className="text-silver/60 text-sm">Premium pre-owned aircraft and industrial equipment sourced globally.</p>
-            </div>
-            <div>
-              <h5 className="text-off-white/80 font-medium mb-3">Aircraft</h5>
-              <ul className="space-y-2 text-silver/60 text-sm">
-                <li><Link href="/aircraft?category=jet" className="hover:text-silver">Jets</Link></li>
-                <li><Link href="/aircraft?category=turboprop" className="hover:text-silver">Turboprops</Link></li>
-                <li><Link href="/aircraft?category=helicopter" className="hover:text-silver">Helicopters</Link></li>
-              </ul>
-            </div>
-            <div>
-              <h5 className="text-off-white/80 font-medium mb-3">Equipment</h5>
-              <ul className="space-y-2 text-silver/60 text-sm">
-                <li><Link href="/plant-equipment" className="hover:text-silver">Cranes</Link></li>
-                <li><Link href="/plant-equipment" className="hover:text-silver">Generators</Link></li>
-                <li><Link href="/plant-equipment" className="hover:text-silver">Pumps</Link></li>
-              </ul>
-            </div>
-            <div>
-              <h5 className="text-off-white/80 font-medium mb-3">Contact</h5>
-              <ul className="space-y-2 text-silver/60 text-sm">
-                <li>0333 772 3803</li>
-                <li>info@hazelriggenterprises.co.uk</li>
-              </ul>
-            </div>
-          </div>
-          <div className="pt-8 border-t border-silver/10 text-center text-silver/40 text-sm">
-            © {new Date().getFullYear()} Hazelrigg Enterprises Ltd. All rights reserved.
-          </div>
-        </div>
-      </footer>
+      <Footer />
     </main>
   )
 }
