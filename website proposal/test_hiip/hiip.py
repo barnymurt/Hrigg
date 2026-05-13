@@ -6,8 +6,18 @@ and templates it for the Hazelrigg site format.
 Sources supported:
 - hrowen.co.uk (JSON-LD schema via requests)
 - controller.com (React hydration via Playwright with persistent profile)
+- gasengineexchange.com (__NEXT_DATA__ extraction via Sanity CMS)
 
 New domains are auto-detected and can be onboarded via hiip_onboard.py
+
+Key extraction patterns:
+- __NEXT_DATA__: Next.js apps embed rich structured data in <script id="__NEXT_DATA__">
+  Always check for this before regex-parsing HTML.
+- /_next/image src: Next.js proxies images through /_next/image?url=... in HTML.
+  Decode ?url= param to get the original CDN URL.
+- Sanity CMS refs: image-{hash}-{dims}.{ext} in __NEXT_DATA__ → cdn.sanity.io CDN reconstruction
+- OG image is only the FIRST image, not the full gallery.
+- Strip query params from filenames on Windows to avoid EINVAL errors.
 """
 
 import re
@@ -241,6 +251,105 @@ def extract_from_sandhills(html):
     return result
 
 
+def extract_from_gasengineexchange(html, url):
+    """Extract listing data from gasengineexchange.com using __NEXT_DATA__."""
+    result = {}
+
+    next_data_match = re.search(r'<script[^>]*id="__NEXT_DATA__"[^>]*>(.*?)</script>', html, re.DOTALL | re.IGNORECASE)
+    if not next_data_match:
+        return result
+
+    try:
+        next_data = json.loads(next_data_match.group(1))
+    except json.JSONDecodeError:
+        return result
+
+    props = next_data.get('props', {})
+    page_props = props.get('pageProps', {})
+    product = page_props.get('product', {})
+
+    if not product:
+        return result
+
+    result['title'] = product.get('title', '') or product.get('titleseo', '')
+    result['make'] = (product.get('brandNames') or [''])[0] if product.get('brandNames') else ''
+    model_raw = product.get('model', '') or ''
+    if not model_raw and result.get('title'):
+        title = result['title']
+        model_match = re.search(r'\b(G\d{4}[A-Z]?|J\d{3}[A-Z]?|TCG\d{4}|G\d{2}[A-Z]{2}|OC-\d+|J416|J616|2G[-\s]\w+|AGENITOR|canopy)\b', title, re.IGNORECASE)
+        if model_match:
+            model_raw = model_match.group(0)
+    result['model'] = model_raw
+
+    kw_raw = product.get('kw', '')
+    result['power'] = f"{kw_raw} kW" if kw_raw else ''
+
+    result['year'] = str(product.get('year', '')) if product.get('year') else ''
+    result['hours'] = str(product.get('hour', '')) if product.get('hour') not in (None, '') else ''
+
+    volt = product.get('volt', '')
+    result['voltage'] = f"{volt} V" if volt else ''
+
+    hz = product.get('hz', '')
+    result['frequency'] = f"{hz} Hz" if hz else ''
+
+    condition_raw = product.get('condition', '')
+    if condition_raw == 'NewCondition':
+        result['condition'] = 'New'
+    elif condition_raw == 'UsedCondition':
+        result['condition'] = 'Used'
+    else:
+        result['condition'] = condition_raw
+
+    result['fuel_type'] = 'Natural Gas'
+
+    unit_count = product.get('unit', '')
+    if unit_count and int(unit_count) > 1:
+        result['units'] = unit_count
+
+    result['sku'] = product.get('sku', '')
+
+    def render_sanity_blocks(obj):
+        if isinstance(obj, str):
+            return obj
+        if isinstance(obj, list):
+            return '\n'.join(render_sanity_blocks(item) for item in obj if render_sanity_blocks(item))
+        if isinstance(obj, dict):
+            children = obj.get('children', [])
+            if children:
+                return ''.join(c.get('text', '') for c in children if isinstance(c, dict))
+        return ''
+
+    desc_parts = []
+    scope = product.get('scope', [])
+    if scope:
+        scope_text = render_sanity_blocks(scope)
+        if scope_text:
+            desc_parts.append(scope_text)
+
+    inspection = page_props.get('inspection', '')
+    if inspection:
+        desc_parts.append(inspection)
+
+    full_desc = product.get('description', '')
+    if full_desc:
+        desc_parts.append(full_desc)
+
+    if not desc_parts:
+        excerpt = product.get('excerpt', '')
+        if excerpt:
+            desc_parts.append(excerpt)
+
+    result['description'] = '\n'.join(desc_parts)
+
+    images = extract_sanity_images_from_ref(product)
+
+    if images:
+        result['images'] = images[:20]
+
+    return result
+
+
 def extract_description_from_html(html):
     """Extract description from HTML div for sites like controller.com where content is in DOM."""
     # controller.com uses: <div class="detail__specs-value">Description text here</div>
@@ -270,6 +379,100 @@ def extract_description_meta(html):
         if m:
             return m.group(1).strip()
     return ""
+
+
+def extract_nextjs_image_src(src_attr: str) -> str | None:
+    """
+    Decode a /_next/image?url=... src attribute to get the original CDN URL.
+    Next.js proxies images through /_next/image in HTML, not direct CDN URLs.
+    """
+    from urllib.parse import unquote, parse_qs, urlparse
+    try:
+        qs = parse_qs(urlparse(src_attr).query)
+        encoded_url = qs.get('url', [''])[0]
+        if encoded_url:
+            return unquote(encoded_url)
+    except Exception:
+        pass
+    return None
+
+
+def extract_sanity_images_from_ref(product: dict, project_id: str = 'bf1z1gj3') -> list:
+    """
+    Extract CDN image URLs from a Sanity CMS product.images array.
+    Ref format: image-{hash}-{dims}.{ext}  e.g. image-2262ea54a34d10eaa5028c98cbd384dcbc4a5a0e-1600x1200-jpg
+    Reconstruct: https://cdn.sanity.io/images/{project}/production/{hash}-{dims}.{ext}
+    """
+    images = []
+    raw_images = product.get('images', [])
+    for img in raw_images:
+        if isinstance(img, dict):
+            asset = img.get('asset', {})
+            ref = asset.get('_ref', '') if isinstance(asset, dict) else ''
+            if ref and ref.startswith('image-'):
+                parts = ref.replace('image-', '').rsplit('-', 1)
+                if len(parts) == 2:
+                    hash_dims, ext = parts
+                    cdn_url = f"https://cdn.sanity.io/images/{project_id}/production/{hash_dims}.{ext}"
+                    images.append(cdn_url)
+        elif isinstance(img, str) and img:
+            images.append(img)
+    return images[:20]
+
+
+def extract_all_images_from_html(html: str) -> list:
+    """
+    Extract all possible image URLs from HTML, in priority order:
+    1. /_next/image?url=... src attributes (Next.js proxy URLs)
+    2. cdn.sanity.io direct URLs (Sanity CDN)
+    3. cdn.ironpla.net (Ritchie Bros)
+    4. media.sandhills.com (Sandhills/Controller)
+    5. og:image meta tag
+    Returns deduplicated list of absolute image URLs.
+    """
+    import html as html_module
+    urls = set()
+
+    # 1. /_next/image src attributes — decode proxy URLs
+    src_matches = re.findall(r'src="(/_next/image\?[^"]+)"', html)
+    for src in src_matches:
+        decoded = extract_nextjs_image_src(src)
+        if decoded:
+            urls.add(decoded)
+
+    # 2. Direct Sanity CDN URLs
+    sanity_matches = re.findall(r'https://cdn\.sanity\.io/images/[^"\'<>\s]+', html)
+    urls.update(sanity_matches)
+
+    # 3. Ritchie Bros cdn.ironpla.net
+    ironpla_matches = re.findall(r'https://cdn\.ironpla\.net/[^"\'<>\s]+', html)
+    urls.update(ironpla_matches)
+
+    # 4. Sandhills media.sandhills.com (with checksum in URL)
+    sandhills_matches = re.findall(r'https://media\.sandhills\.com/img\.axd\?[^"\'<>\s]+', html)
+    unescaped = [html_module.unescape(u) for u in sandhills_matches]
+    urls.update(unescaped)
+
+    # 5. OG image (only one — use as last resort, not full gallery)
+    og_match = re.search(r'<meta[^>]+property=["\']og:image["\'][^>]+content=["\']([^"\']+)["\']', html, re.IGNORECASE)
+    if not og_match:
+        og_match = re.search(r'<meta[^>]+content=["\']([^"\']+)["\'][^>]+property=["\']og:image["\']', html, re.IGNORECASE)
+    if og_match and og_match.group(1).startswith('http'):
+        urls.add(og_match.group(1))
+
+    return list(urls)
+
+
+def safe_filename_from_url(url: str, index: int = 0) -> str:
+    """
+    Extract a safe filename from a URL, stripping all query params.
+    Windows can't handle ? & in filenames — split on ? first.
+    """
+    raw = url.split('/')[-1]
+    base = raw.split('?')[0] if '?' in raw else raw
+    if not base or '.' not in base:
+        base = f'img-{index}.jpg'
+    return base
 
 
 def extract_from_html(html):
@@ -335,16 +538,27 @@ def parse_listing(url):
         if value is None or value == "None" or value == [] or value == {}:
             result[key] = ""
 
+    # Dedicated extractor for gasengineexchange.com — uses __NEXT_DATA__ (all fields, 15 images)
+    # Run FIRST so it takes priority over JSON-LD (which only has 1 image and generic fields)
+    if 'gasengineexchange' in get_domain(url):
+        gee_data = extract_from_gasengineexchange(html, url)
+        if gee_data:
+            gee_images = gee_data.pop('images', None)
+            result.update(gee_data)
+            if gee_images:
+                result['images'] = gee_images
+            print(f"  gasengineexchange.com extracted: {gee_data.get('title', 'N/A')}")
+    else:
+        # For non-Sanity sources, try to extract images from HTML using all patterns
+        all_imgs = extract_all_images_from_html(html)
+        if all_imgs:
+            result['images'] = all_imgs[:20]
+
     # If key fields still empty, try Controller.com sandhills extractor
     domain = get_domain(url)
     if 'controller' in domain and (not result.get('make') or not result.get('model')):
         print("Using sandhills extractor for controller.com")
         result.update(extract_from_sandhills(html))
-
-    # Auto-detect site type for future reference
-    if not result.get('images') or not result.get('make'):
-        site_type = detect_site_extractor(url, html)
-        print(f"Auto-detected site type: {site_type}")
 
     if not result['title'] or result['title'] == 'N/A':
         result['title'] = data.get('title', '')
