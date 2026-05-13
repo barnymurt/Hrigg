@@ -201,13 +201,19 @@ def extract_from_sandhills(html):
     seller = re.search(r'"SellerName"\s*:\s*"([^"]+)"', react_script)
 
     media_ids = re.findall(r'"DisplayImageMediaId"\s*:\s*(\d+)', react_script)
-    images = []
-    if media_ids:
-        base = 'https://media.sandhills.com/img.axd?id={id}&wid=4326165471&rwl=False&p=&ext=&w=614&h=460&t=&lp=&c=True&wt=False&sz=Max&rt=0&checksum='
+
+    # Extract full Sandhills image URLs from HTML (with checksum) instead of building from media ID
+    import html as html_module
+    raw_urls = re.findall(r'https://media\.sandhills\.com/img\.axd\?[^"\'<>\s]+', html)
+    full_urls = list(dict.fromkeys(html_module.unescape(u) for u in raw_urls))
+    if full_urls:
+        result['images'] = full_urls[:20]
+    elif media_ids:
+        base = 'https://media.sandhills.com/img.axd?id={id}&wid=4326165471&rwl=False&p=&ext=&w=614&h=460&t=&lp=&c=True&wt=False&sz=Max&rt=0'
+        img_list = []
         for mid in media_ids:
-            images.append(base.format(id=mid))
-    if images:
-        result['images'] = images
+            img_list.append(base.format(id=mid))
+        result['images'] = img_list
 
     if mfr:
         result['make'] = mfr.group(1)
