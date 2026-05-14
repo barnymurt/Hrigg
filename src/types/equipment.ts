@@ -9,6 +9,10 @@ export interface EquipmentSpecifications {
   condition?: string
   serialNumber?: string
   weight?: string | number
+  auxiliaryVoltage?: string
+  degreeOfProtection?: string
+  mainBusbarRating?: string
+  mainBusbarFaultLevel?: string
   dimensions?: string
   liftingHeight?: string
   engine?: string
