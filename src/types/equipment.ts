@@ -103,6 +103,10 @@ export interface EquipmentSpecifications {
   housing?: string
   seats?: number
   exteriorColor?: string
+  transmission?: string
+  bodyType?: string
+  previousOwners?: number
+  engineSize?: string
 }
 
 export interface Equipment {
