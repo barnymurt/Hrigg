@@ -94,10 +94,10 @@ export default function Navigation() {
               </button>
               {servicesOpen && (
                 <div className="absolute top-full left-0 mt-2 w-64 bg-charcoal border border-silver/20 rounded-lg shadow-xl py-2 z-50">
-                  <div className="px-4 py-3 text-off-white/80 hover:text-silver hover:bg-silver/5 group">
+                  <Link href="/aircraft" className="block px-4 py-3 text-off-white/80 hover:text-silver hover:bg-silver/5 group">
                     <div className="font-medium">Aircraft</div>
                     <div className="text-xs text-silver/60 group-hover:text-silver/80">Fixed-wing and rotary</div>
-                  </div>
+                  </Link>
                   <Link href="/equipment?category=luxury-vehicles" className="block px-4 py-3 text-off-white/80 hover:text-silver hover:bg-silver/5 group">
                     <div className="font-medium">Motorcars</div>
                     <div className="text-xs text-silver/60 group-hover:text-silver/80">Performance and marque vehicles</div>

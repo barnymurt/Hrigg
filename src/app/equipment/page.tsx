@@ -91,7 +91,7 @@ function EquipmentContent() {
 
   useEffect(() => {
     const category = searchParams.get('category')
-    if (category && ['cranes', 'generators', 'pumps', 'trailers', 'tower-lights', 'engines'].includes(category)) {
+    if (category && ['cranes', 'generators', 'pumps', 'trailers', 'tower-lights', 'engines', 'luxury-vehicles', 'aircraft'].includes(category)) {
       setFilter({ category: category as Equipment['category'] })
     }
   }, [searchParams])
