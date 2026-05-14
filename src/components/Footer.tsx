@@ -41,6 +41,16 @@ export default function Footer() {
               <li><a href={CONTACT.emailLink} className="hover:text-silver">{CONTACT.email}</a></li>
             </ul>
           </div>
+          <div>
+            <h5 className="text-off-white/80 font-medium mb-3">Legal</h5>
+            <ul className="space-y-2 text-silver/60 text-sm">
+              <li><Link href="/privacy-policy" className="hover:text-silver">Privacy Policy</Link></li>
+              <li><Link href="/cookie-policy" className="hover:text-silver">Cookie Policy</Link></li>
+              <li><Link href="/disclaimer" className="hover:text-silver">Disclaimer</Link></li>
+              <li><Link href="/terms-and-conditions" className="hover:text-silver">Terms & Conditions</Link></li>
+              <li><Link href="/compliance" className="hover:text-silver">Compliance</Link></li>
+            </ul>
+          </div>
         </div>
         <div className="pt-8 border-t border-silver/10 text-center text-silver/40 text-sm">
           © {new Date().getFullYear()} {COMPANY.name}. All rights reserved.

@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import Navigation from '@/components/Navigation'
-import Image from 'next/image'
+import Footer from '@/components/Footer'
 
 export default function CompliancePage() {
   return (
@@ -61,42 +61,7 @@ export default function CompliancePage() {
         </div>
       </section>
 
-      <footer className="py-12 border-t border-silver/10">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="grid md:grid-cols-4 gap-8 mb-8">
-            <div>
-              <Image src="/images/logo.png" alt="Hazelrigg Enterprises" width={150} height={40} className="h-auto w-auto mb-4" unoptimized />
-              <p className="text-silver/60 text-sm">Premium pre-owned aircraft and industrial equipment sourced globally.</p>
-            </div>
-            <div>
-              <h5 className="text-off-white/80 font-medium mb-3">Aircraft</h5>
-              <ul className="space-y-2 text-silver/60 text-sm">
-                <li><Link href="/aircraft?category=jet" className="hover:text-silver">Jets</Link></li>
-                <li><Link href="/aircraft?category=turboprop" className="hover:text-silver">Turboprops</Link></li>
-                <li><Link href="/aircraft?category=helicopter" className="hover:text-silver">Helicopters</Link></li>
-              </ul>
-            </div>
-            <div>
-              <h5 className="text-off-white/80 font-medium mb-3">Equipment</h5>
-              <ul className="space-y-2 text-silver/60 text-sm">
-                <li><Link href="/plant-equipment" className="hover:text-silver">Cranes</Link></li>
-                <li><Link href="/plant-equipment" className="hover:text-silver">Generators</Link></li>
-                <li><Link href="/plant-equipment" className="hover:text-silver">Pumps</Link></li>
-              </ul>
-            </div>
-            <div>
-              <h5 className="text-off-white/80 font-medium mb-3">Contact</h5>
-              <ul className="space-y-2 text-silver/60 text-sm">
-                <li>0333 772 3903</li>
-                <li>info@hazelriggenterprises.co.uk</li>
-              </ul>
-            </div>
-          </div>
-          <div className="pt-8 border-t border-silver/10 text-center text-silver/40 text-sm">
-            © {new Date().getFullYear()} Hazelrigg Enterprises Ltd. All rights reserved.
-          </div>
-        </div>
-      </footer>
+      <Footer />
     </main>
   )
 }
