@@ -7,7 +7,8 @@ export interface EquipmentSpecifications {
   voltage?: string
   hours?: string
   condition?: string
-  weight?: string
+  serialNumber?: string
+  weight?: string | number
   dimensions?: string
   liftingHeight?: string
   engine?: string
