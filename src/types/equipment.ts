@@ -101,6 +101,9 @@ export interface EquipmentSpecifications {
   controlPanel?: string
   frequency?: string
   housing?: string
+  seats?: number
+  exteriorColor?: string
+  drive?: string
 }
 
 export interface Equipment {
