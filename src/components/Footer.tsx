@@ -52,8 +52,17 @@ export default function Footer() {
             </ul>
           </div>
         </div>
-        <div className="pt-8 border-t border-silver/10 text-center text-silver/40 text-sm">
-          © {new Date().getFullYear()} {COMPANY.name}. All rights reserved.
+        <div className="pt-8 border-t border-silver/10">
+          <div className="flex flex-wrap justify-center gap-6 text-silver/40 text-sm mb-4">
+            <Link href="/privacy-policy" className="hover:text-silver">Privacy Policy</Link>
+            <Link href="/cookie-policy" className="hover:text-silver">Cookie Policy</Link>
+            <Link href="/disclaimer" className="hover:text-silver">Disclaimer</Link>
+            <Link href="/terms-and-conditions" className="hover:text-silver">Terms & Conditions</Link>
+            <Link href="/compliance" className="hover:text-silver">Compliance</Link>
+          </div>
+          <div className="text-center text-silver/40 text-sm">
+            © {new Date().getFullYear()} {COMPANY.name}. All rights reserved.
+          </div>
         </div>
       </div>
     </footer>
