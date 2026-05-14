@@ -1863,6 +1863,5 @@ export const equipmentCategories = [
   { name: 'Trailers and Transporters', slug: 'trailers', count: equipment.filter(e => e.category === 'trailers').length },
   { name: 'Mobile Boat Hoists', slug: 'mobile-boat-hoists', count: equipment.filter(e => e.category === 'mobile-boat-hoists').length },
   { name: 'Tower Lights', slug: 'tower-lights', count: equipment.filter(e => e.category === 'tower-lights').length },
-  { name: 'Luxury Motor Vehicles', slug: 'luxury-vehicles', count: equipment.filter(e => e.category === 'luxury-vehicles').length },
-  { name: 'Engines / Miscellaneous', slug: 'engines', count: equipment.filter(e => e.category === 'engines').length },
+  { name: 'Engines', slug: 'engines', count: equipment.filter(e => e.category === 'engines').length },
 ]

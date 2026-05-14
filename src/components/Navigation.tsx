@@ -63,6 +63,9 @@ export default function Navigation() {
                   <Link href="/equipment?category=tower-lights" className="block px-4 py-3 text-off-white/80 hover:text-silver hover:bg-silver/5">
                     Tower Lights
                   </Link>
+                  <Link href="/equipment?category=engines" className="block px-4 py-3 text-off-white/80 hover:text-silver hover:bg-silver/5">
+                    Engines
+                  </Link>
                   <div className="px-4 py-2 text-gold/70 text-xs font-semibold uppercase tracking-wider mt-2">Lifting & Handling</div>
                   <Link href="/equipment?category=cranes" className="block px-4 py-3 text-off-white/80 hover:text-silver hover:bg-silver/5">
                     Cranes
