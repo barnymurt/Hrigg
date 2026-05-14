@@ -26,7 +26,7 @@ export default function Navigation() {
   }
 
   const handleEquipmentLeave = () => {
-    equipmentTimeout.current = setTimeout(() => setEquipmentOpen(false), 150)
+    equipmentTimeout.current = setTimeout(() => setEquipmentOpen(false), 300)
   }
 
   return (
