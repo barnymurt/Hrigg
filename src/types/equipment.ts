@@ -47,7 +47,7 @@ export interface EquipmentSpecifications {
   solidsHandling?: string
   drive?: string
   kilowatts?: string
-  fuelCapacity?: string
+  fuelCapacity?: string | number
   maxHead?: string
   dwt?: string
   dwcc?: string
@@ -107,6 +107,31 @@ export interface EquipmentSpecifications {
   bodyType?: string
   previousOwners?: number
   engineSize?: string
+  registrationDate?: string
+  doors?: number
+  interiorTrim?: string
+  driveType?: string
+  franchiseApproved?: string
+  serviceHistory?: string
+  ulezCompliant?: string
+  startStop?: string
+  insuranceGroup?: number
+  bhp?: number
+  enginePowerPS?: number
+  acceleration060?: number
+  maxSpeed?: number
+  mpgCombined?: number
+  co2?: number
+  torque?: number
+  height?: number
+  kerbWeight?: number
+  length?: number
+  width?: number
+  stroke?: number
+  cylinders?: number
+  valvesPerCylinder?: number
+  forwardGears?: number
+  grossWeight?: number
 }
 
 export interface Equipment {
