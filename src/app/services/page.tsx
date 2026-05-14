@@ -56,7 +56,7 @@ export default function ServicesPage() {
                 Our ability to find those items that you want – and even some you may not yet know you want – is legendary! We have contacts especially in the shipping, port operations, energy and infrastructure sectors on a global basis.
               </p>
               <p className="text-silver/80">
-                Need a gas generator in Turkey next week? <span className="text-gold font-semibold">We can help.</span>
+                Need a gas generator on site next week? <Link href="/equipment" className="text-gold font-semibold hover:underline">We can help.</Link>
               </p>
             </div>
             <div className="bg-charcoal/30 rounded-xl p-8 border border-silver/10">

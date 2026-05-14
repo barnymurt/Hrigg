@@ -38,28 +38,9 @@ export default function Navigation() {
           </Link>
 
           <div className="hidden lg:flex items-center space-x-6">
-            <div
-              className="relative h-full flex items-center"
-              onMouseEnter={handleServicesEnter}
-              onMouseLeave={handleServicesLeave}
-            >
-              <button className="text-off-white/80 hover:text-silver transition-colors font-medium py-2">
-                Services
-              </button>
-              {servicesOpen && (
-                <div className="absolute top-full left-0 mt-2 w-56 bg-charcoal border border-silver/20 rounded-lg shadow-xl py-2 z-50">
-                  <Link href="/services" className="block px-4 py-3 text-off-white/80 hover:text-silver hover:bg-silver/5">
-                    All Services
-                  </Link>
-                  <Link href="/equipment" className="block px-4 py-3 text-off-white/80 hover:text-silver hover:bg-silver/5">
-                    Machinery and Equipment
-                  </Link>
-                  <Link href="/projects" className="block px-4 py-3 text-off-white/80 hover:text-silver hover:bg-silver/5">
-                    Property Development
-                  </Link>
-                </div>
-              )}
-            </div>
+            <Link href="/services" className="text-off-white/80 hover:text-silver transition-colors font-medium py-2">
+              Our Services
+            </Link>
 
             <Link href="/about" className="text-off-white/80 hover:text-silver transition-colors font-medium py-2">
               About
@@ -71,41 +52,56 @@ export default function Navigation() {
               onMouseLeave={handleEquipmentLeave}
             >
               <button className="text-off-white/80 hover:text-silver transition-colors font-medium py-2">
-                Equipment
+                Industrial Plant
               </button>
               {equipmentOpen && (
-                <div className="absolute top-full left-0 mt-2 w-56 bg-charcoal border border-silver/20 rounded-lg shadow-xl py-2 z-50">
-                  <Link href="/equipment" className="block px-4 py-3 text-off-white/80 hover:text-silver hover:bg-silver/5">
-                    All Equipment
-                  </Link>
-                  <Link href="/equipment?category=cranes" className="block px-4 py-3 text-off-white/80 hover:text-silver hover:bg-silver/5">
-                    Cranes
-                  </Link>
+                <div className="absolute top-full left-0 mt-2 w-64 bg-charcoal border border-silver/20 rounded-lg shadow-xl py-2 z-50">
+                  <div className="px-4 py-2 text-gold/70 text-xs font-semibold uppercase tracking-wider">Power & Light</div>
                   <Link href="/equipment?category=generators" className="block px-4 py-3 text-off-white/80 hover:text-silver hover:bg-silver/5">
                     Power Generators
-                  </Link>
-                  <Link href="/equipment?category=pumps" className="block px-4 py-3 text-off-white/80 hover:text-silver hover:bg-silver/5">
-                    Pumps
-                  </Link>
-                  <Link href="/equipment?category=trailers" className="block px-4 py-3 text-off-white/80 hover:text-silver hover:bg-silver/5">
-                    Trailers and Transporters
-                  </Link>
-                  <Link href="/equipment?category=mobile-boat-hoists" className="block px-4 py-3 text-off-white/80 hover:text-silver hover:bg-silver/5">
-                    Mobile Boat Hoists
                   </Link>
                   <Link href="/equipment?category=tower-lights" className="block px-4 py-3 text-off-white/80 hover:text-silver hover:bg-silver/5">
                     Tower Lights
                   </Link>
-                  <Link href="/equipment?category=engines" className="block px-4 py-3 text-off-white/80 hover:text-silver hover:bg-silver/5">
-                    Engines
+                  <div className="px-4 py-2 text-gold/70 text-xs font-semibold uppercase tracking-wider mt-2">Lifting & Handling</div>
+                  <Link href="/equipment?category=cranes" className="block px-4 py-3 text-off-white/80 hover:text-silver hover:bg-silver/5">
+                    Cranes
+                  </Link>
+                  <Link href="/equipment?category=mobile-boat-hoists" className="block px-4 py-3 text-off-white/80 hover:text-silver hover:bg-silver/5">
+                    Mobile Boat Hoists
+                  </Link>
+                  <div className="px-4 py-2 text-gold/70 text-xs font-semibold uppercase tracking-wider mt-2">Transport & Fluid</div>
+                  <Link href="/equipment?category=trailers" className="block px-4 py-3 text-off-white/80 hover:text-silver hover:bg-silver/5">
+                    Trailers & Transporters
+                  </Link>
+                  <Link href="/equipment?category=pumps" className="block px-4 py-3 text-off-white/80 hover:text-silver hover:bg-silver/5">
+                    Pumps
                   </Link>
                 </div>
               )}
             </div>
 
-            <Link href="/aircraft" className="text-off-white/80 hover:text-silver transition-colors font-medium py-2">
-              Aircraft
-            </Link>
+            <div
+              className="relative h-full flex items-center"
+              onMouseEnter={handleServicesEnter}
+              onMouseLeave={handleServicesLeave}
+            >
+              <button className="text-off-white/80 hover:text-silver transition-colors font-medium py-2">
+                Aviation & Motorcars
+              </button>
+              {servicesOpen && (
+                <div className="absolute top-full left-0 mt-2 w-64 bg-charcoal border border-silver/20 rounded-lg shadow-xl py-2 z-50">
+                  <div className="px-4 py-3 text-off-white/80 hover:text-silver hover:bg-silver/5 group">
+                    <div className="font-medium">Aircraft</div>
+                    <div className="text-xs text-silver/60 group-hover:text-silver/80">Fixed-wing and rotary</div>
+                  </div>
+                  <Link href="/equipment?category=luxury-vehicles" className="block px-4 py-3 text-off-white/80 hover:text-silver hover:bg-silver/5 group">
+                    <div className="font-medium">Motorcars</div>
+                    <div className="text-xs text-silver/60 group-hover:text-silver/80">Performance and marque vehicles</div>
+                  </Link>
+                </div>
+              )}
+            </div>
 
             <Link href="/contact" className="bg-gold hover:bg-gold/90 text-charcoal font-semibold px-5 py-2 rounded transition-colors">
               Contact Us
@@ -130,11 +126,10 @@ export default function Navigation() {
         {isOpen && (
           <div className="lg:hidden py-4 border-t border-silver/10">
             <div className="flex flex-col space-y-3">
-              <Link href="/services" className="text-off-white/80 hover:text-silver py-2">Services</Link>
-              <Link href="/projects" className="text-off-white/80 hover:text-silver py-2">Projects</Link>
+              <Link href="/services" className="text-off-white/80 hover:text-silver py-2">Our Services</Link>
               <Link href="/about" className="text-off-white/80 hover:text-silver py-2">About</Link>
-              <Link href="/equipment" className="text-off-white/80 hover:text-silver py-2">Equipment</Link>
-              <Link href="/aircraft" className="text-off-white/80 hover:text-silver py-2">Aircraft</Link>
+              <Link href="/equipment" className="text-off-white/80 hover:text-silver py-2">Industrial Plant</Link>
+              <Link href="/aircraft" className="text-off-white/80 hover:text-silver py-2">Aviation & Motorcars</Link>
               <Link href="/contact" className="bg-gold hover:bg-gold/90 text-charcoal font-semibold px-5 py-3 rounded text-center w-full">
                 Contact Us
               </Link>

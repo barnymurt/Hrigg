@@ -96,7 +96,7 @@ export default function PlantEquipmentPage() {
         <div className="max-w-4xl mx-auto text-center">
           <h2 className="font-montserrat text-3xl font-bold text-off-white mb-4">Looking for Something Specific?</h2>
           <p className="text-silver mb-8">
-            Need a gas generator in Turkey next week? We can help. Our ability to find those items that you want – and even some you may not yet know you want – is legendary!
+            Need a gas generator on site next week? <Link href="/equipment" className="text-gold font-semibold hover:underline">We can help.</Link> Our ability to find those items that you want – and even some you may not yet know you want – is legendary!
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a href="tel:03337723903" className="bg-gold hover:bg-gold/90 text-charcoal font-semibold px-8 py-4 rounded text-lg transition-colors">
