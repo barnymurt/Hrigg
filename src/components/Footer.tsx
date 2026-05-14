@@ -27,13 +27,17 @@ export default function Footer() {
           </div>
           <div>
             <h5 className="text-off-white/80 font-medium mb-3">Industrial Plant</h5>
-            <ul className="space-y-2 text-silver/60 text-sm">
+            <ul className="space-y-1 text-silver/60 text-sm">
+              <li className="text-gold/70 text-xs font-semibold uppercase tracking-wider mt-2">Power & Light</li>
               <li><Link href="/equipment?category=generators" className="hover:text-silver">Power Generators</Link></li>
+              <li><Link href="/equipment?category=tower-lights" className="hover:text-silver">Tower Lights</Link></li>
+              <li><Link href="/equipment?category=engines" className="hover:text-silver">Engines</Link></li>
+              <li className="text-gold/70 text-xs font-semibold uppercase tracking-wider mt-2">Lifting & Handling</li>
               <li><Link href="/equipment?category=cranes" className="hover:text-silver">Cranes</Link></li>
+              <li><Link href="/equipment?category=mobile-boat-hoists" className="hover:text-silver">Mobile Boat Hoists</Link></li>
+              <li className="text-gold/70 text-xs font-semibold uppercase tracking-wider mt-2">Transport & Fluid</li>
               <li><Link href="/equipment?category=trailers" className="hover:text-silver">Trailers & Transporters</Link></li>
               <li><Link href="/equipment?category=pumps" className="hover:text-silver">Pumps</Link></li>
-              <li><Link href="/equipment?category=mobile-boat-hoists" className="hover:text-silver">Mobile Boat Hoists</Link></li>
-              <li><Link href="/equipment?category=tower-lights" className="hover:text-silver">Tower Lights</Link></li>
             </ul>
           </div>
           <div>
