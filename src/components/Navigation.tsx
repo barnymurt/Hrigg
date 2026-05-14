@@ -98,7 +98,7 @@ export default function Navigation() {
                     <div className="font-medium">Aircraft</div>
                     <div className="text-xs text-silver/60 group-hover:text-silver/80">Fixed-wing and rotary</div>
                   </Link>
-                  <Link href="/equipment?category=luxury-vehicles" className="block px-4 py-3 text-off-white/80 hover:text-silver hover:bg-silver/5 group">
+                  <Link href="/motorcars" className="block px-4 py-3 text-off-white/80 hover:text-silver hover:bg-silver/5 group">
                     <div className="font-medium">Motorcars</div>
                     <div className="text-xs text-silver/60 group-hover:text-silver/80">Performance and marque vehicles</div>
                   </Link>
