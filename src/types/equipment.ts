@@ -110,7 +110,7 @@ export interface Equipment {
   shortDescription: string
   longDescription: string
   price: string
-  category: 'cranes' | 'generators' | 'pumps' | 'trailers' | 'tower-lights' | 'engines' | 'mobile-boat-hoists'
+  category: 'cranes' | 'generators' | 'pumps' | 'trailers' | 'tower-lights' | 'engines' | 'mobile-boat-hoists' | 'luxury-vehicles'
   manufacturer: string
   images: string[]
   specifications: EquipmentSpecifications
