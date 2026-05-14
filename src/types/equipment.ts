@@ -103,7 +103,6 @@ export interface EquipmentSpecifications {
   housing?: string
   seats?: number
   exteriorColor?: string
-  drive?: string
 }
 
 export interface Equipment {
